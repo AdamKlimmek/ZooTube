@@ -14,12 +14,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/adamklimmek/youtube.git"
+        "url": "git+https://github.com/adamklimmek/zootube.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "homepage": "https://github.com/adamklimmek/youtube#readme",
+    "homepage": "https://github.com/adamklimmek/zootube#readme",
     "dependencies": {
         "@babel/core": "^7.11.1",
         "@babel/preset-env": "^7.11.0",
