@@ -1,0 +1,49 @@
+.navbar {
+    height: 50px;
+    border-bottom: 1px solid lightgray;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-left {
+    border: 1px solid grey;
+    margin-left: 20px;
+}
+
+.navbar-search {
+    border: 1px solid grey;
+
+}
+
+.navbar-right {
+    border: 1px solid grey;
+    margin-right: 20px;
+}
+
+.user-profile-icon {
+    background: #f99602;
+    border-radius: 100%;
+    font-size: 20px;
+    color: white;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 35px;
+    position: relative;
+}
+
+.user-profile-dropdown-menu {
+    position: absolute;
+    display: none;
+    border: 1px solid lightgray;
+    width: 200px;
+    height: 200px;
+    right: 20px;
+}
+
+.user-profile:click .user-profile-dropdown-menu {
+    display: block;
+}

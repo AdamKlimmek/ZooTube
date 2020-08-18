@@ -8,7 +8,7 @@ class Api::SessionsController < ApplicationController
             login(@user)
             render :show
         else
-            render json: ['Invalid username/password'], status: 401
+            render json: ['Invalid email/password'], status: 401
         end
     end
 

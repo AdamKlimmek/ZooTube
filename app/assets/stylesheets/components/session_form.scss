@@ -1,0 +1,133 @@
+.session-form {
+    margin: auto;
+    margin-top: 100px;
+
+    width: 425px;
+    height: 500px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid lightgrey;
+    border-radius: 7px;
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+
+    font-family: Garamond;
+}
+
+.session-form-header {
+    // border: 1px solid grey;
+
+    margin: 35px 35px 0px 35px;
+
+}
+
+.session-form-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.session-form-logo svg {
+    color: red;
+    font-size: 35px;
+    margin-right: 7px;
+}
+
+.session-form-logo span {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.session-form-type {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    font-size: 25px;
+}
+
+.session-form-prompt {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.session-form-body {
+    // border: 1px solid grey;
+    height: 215px;
+    margin: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.session-form-input {
+    display: flex;
+    // justify-content: center;
+
+    height: 50px;
+    // margin: 0px 35px;
+    // text-indent: 5px;;
+
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+}
+
+.session-form-input input {
+    text-indent: 15px;
+}
+
+.session-form-errors-list {
+    display: flex;
+    // justify-content: center;
+    flex-direction: column;
+    margin: 0px 35px;
+}
+
+.session-form-error {
+    color: red;
+    font-size: 14px;
+    // justify-content: center;
+    align-items: center;
+    margin: auto;
+
+}
+
+.session-form-footer {
+    // border: 1px solid grey;
+
+    margin: 35px;
+
+}
+
+.session-form-links-and-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session-form-link {
+    color: rgb(80, 80, 255);
+}
+
+.session-form-link:hover {
+    text-decoration: underline;
+}
+
+.session-form-button {
+    border: 1px solid rgb(80, 80, 255);
+    border-radius: 5px;
+    padding: 10px 25px;
+    color: white;
+    background-color: rgb(80, 80, 255);
+
+    transition-property: box-shadow;
+    transition-duration: 0.3s;
+}
+
+.session-form-button:hover {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    background-color: rgb(95, 95, 255);
+}

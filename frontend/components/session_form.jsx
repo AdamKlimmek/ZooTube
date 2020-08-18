@@ -1,4 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -39,14 +42,13 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        // debugger
         let usernameField;
         let demoUser;
 
         if (this.props.formType === "Sign Up") {
             demoUser = null;
             usernameField =
-                <div>
+                <div className="session-form-input">
                     <input type='text'
                         value={this.state.username}
                         placeholder="Username"
@@ -56,46 +58,62 @@ class SessionForm extends React.Component {
                 </div>
         } else {
             usernameField = null;
-            demoUser = <button onClick={this.handleDemoLogin}>Demo</button>
+            demoUser = <button className="session-form-button" onClick={this.handleDemoLogin}>Demo</button>
         };
     
         return (
-            <div>
-                <h2>{this.props.formType}</h2>
+            <div className="session-form">
+                <div className="session-form-header">
+                    <div className="session-form-logo">
+                        <FontAwesomeIcon icon={faYoutube} />
+                        <span>ZooTube</span>
+                    </div>
+
+                    <h2 className="session-form-type">{this.props.formType}</h2>
+
+                    <p className="session-form-prompt">to continue to ZooTube</p>
+                </div>
+
                 <form onSubmit={this.handleSubmit}>
-                    {usernameField}
+                    <div className="session-form-body">
+                        {usernameField}
 
-                    <div>
-                        <input type='text'
-                            value={this.state.email}
-                            placeholder="Email"
-                            onChange={this.update('email')}
+                        <div className="session-form-input">
+                            <input type='text'
+                                value={this.state.email}
+                                placeholder="Email"
+                                onChange={this.update('email')}
+                                />
+                            <br />
+                        </div>
+
+                        <div className="session-form-input">
+                            <input type='password'
+                                value={this.state.password}
+                                placeholder="Password"
+                                onChange={this.update('password')}
                             />
-                        <br />
+                            <br />
+                        </div>
+
+                        <ul className="session-form-errors-list">
+                            {this.props.errors.map((error, i) => (
+                                <li className="session-form-error" key={`error-${i}`}>
+                                    {error}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
+                    
+                    <div className="session-form-footer">
+                        <div className="session-form-links-and-buttons">
+                            {this.props.navLink}
+                            
+                            {demoUser}
 
-                    <div>
-                        <input type='password'
-                            value={this.state.password}
-                            placeholder="Password"
-                            onChange={this.update('password')}
-                        />
-                        <br />
+                            <button className="session-form-button">Next</button>
+                        </div>
                     </div>
-
-                    <ul>
-                        {this.props.errors.map((error, i) => (
-                            <li key={`error-${i}`}>
-                                {error}
-                            </li>
-                        ))}
-                    </ul>
-                    
-                    {this.props.navLink}
-                    
-                    {demoUser}
-
-                    <button>Next</button>
                 </form>
             </div>
         );
