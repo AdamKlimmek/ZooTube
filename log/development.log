@@ -22031,3 +22031,344 @@ Migrating to CreateUsers (20200817211231)
   ↳ db/seeds.rb:41
   [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
   ↳ db/seeds.rb:41
+Started GET "/" for ::1 at 2020-08-19 13:33:18 -0700
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/adamklimmek/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (8.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Z8R8EdZ4CpbLNBh8T8DuCQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (29.9ms)
+Completed 200 OK in 3538ms (Views: 3517.5ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/" for ::1 at 2020-08-19 13:34:32 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Z8R8EdZ4CpbLNBh8T8DuCQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 142ms (Views: 131.7ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/" for ::1 at 2020-08-19 13:35:07 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Z8R8EdZ4CpbLNBh8T8DuCQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 121ms (Views: 112.3ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2020-08-19 13:35:10 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Z8R8EdZ4CpbLNBh8T8DuCQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 64ms (Views: 55.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/users" for ::1 at 2020-08-19 13:35:32 -0700
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:7
+Completed 401 Unauthorized in 241ms (Views: 0.2ms | ActiveRecord: 8.6ms)
+
+
+Started POST "/api/session" for ::1 at 2020-08-19 13:35:36 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-08-19 13:37:31 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Z8R8EdZ4CpbLNBh8T8DuCQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 47ms (Views: 42.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/session" for ::1 at 2020-08-19 13:37:34 -0700
+Started POST "/api/session" for ::1 at 2020-08-19 13:37:34 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "email"=>"demo.user@demo.com", "password"=>"[FILTERED]"}}
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "email"=>"demo.user@demo.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo.user@demo.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo.user@demo.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:32
+  ↳ app/models/user.rb:32
+  [1m[36mUser Exists (3.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "DemoUser"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists (2.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "DemoUser"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+  ↳ app/models/user.rb:32
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo.user@demo.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo.user@demo.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "lrdKhHAtcNg4EGpKM89VVA"], ["updated_at", "2020-08-19 20:37:34.943141"], ["id", 4]]
+  ↳ app/models/user.rb:32
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:32
+  [1m[36mUser Update (5.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "4y2Lc9fkg9nLF8BYc1ijkw"], ["updated_at", "2020-08-19 20:37:34.945001"], ["id", 4]]
+  ↳ app/models/user.rb:32
+  Rendering api/sessions/show.json.jbuilder
+  Rendered api/sessions/show.json.jbuilder (0.7ms)
+Completed 200 OK in 487ms (Views: 9.6ms | ActiveRecord: 10.2ms)
+
+
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:32
+  Rendering api/sessions/show.json.jbuilder
+  Rendered api/sessions/show.json.jbuilder (0.1ms)
+Completed 200 OK in 496ms (Views: 7.7ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/" for ::1 at 2020-08-19 13:38:39 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "4y2Lc9fkg9nLF8BYc1ijkw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 97ms (Views: 93.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2020-08-19 13:40:23 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "4y2Lc9fkg9nLF8BYc1ijkw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 40ms (Views: 35.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2020-08-19 13:47:06 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "4y2Lc9fkg9nLF8BYc1ijkw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 171ms (Views: 165.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2020-08-19 13:47:21 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "4y2Lc9fkg9nLF8BYc1ijkw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 129ms (Views: 124.8ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-08-19 13:49:20 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "4y2Lc9fkg9nLF8BYc1ijkw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:32
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "DemoUser"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo.user@demo.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+  [1m[36mUser Update (2.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "Fi-teFB1knFg4enDTuioGg"], ["updated_at", "2020-08-19 20:49:20.778617"], ["id", 4]]
+  ↳ app/models/user.rb:32
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:32
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/api/users" for ::1 at 2020-08-19 13:49:26 -0700
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]"}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:7
+Completed 401 Unauthorized in 244ms (Views: 0.4ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/api/session" for ::1 at 2020-08-19 13:49:27 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/users" for ::1 at 2020-08-19 13:49:47 -0700
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:7
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:7
+Completed 401 Unauthorized in 226ms (Views: 0.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/session" for ::1 at 2020-08-19 13:49:49 -0700
+Started POST "/api/session" for ::1 at 2020-08-19 13:49:49 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "email"=>"demo.user@demo.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo.user@demo.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:32
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "DemoUser"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo.user@demo.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+  [1m[36mUser Update (2.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "cWYOlj2rAzWV4WczcYOtbw"], ["updated_at", "2020-08-19 20:49:49.384860"], ["id", 4]]
+  ↳ app/models/user.rb:32
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:32
+  Rendering api/sessions/show.json.jbuilder
+  Rendered api/sessions/show.json.jbuilder (0.7ms)
+Completed 200 OK in 247ms (Views: 12.7ms | ActiveRecord: 6.4ms)
+
+
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"", "email"=>"demo.user@demo.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo.user@demo.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:32
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "DemoUser"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo.user@demo.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "6PEzKfFs7bWP7QA0c_yYBw"], ["updated_at", "2020-08-19 20:49:49.684413"], ["id", 4]]
+  ↳ app/models/user.rb:32
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:32
+  Rendering api/sessions/show.json.jbuilder
+  Rendered api/sessions/show.json.jbuilder (0.2ms)
+Completed 200 OK in 286ms (Views: 6.9ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/" for ::1 at 2020-08-19 13:55:01 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "6PEzKfFs7bWP7QA0c_yYBw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 42ms (Views: 37.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2020-08-19 13:55:06 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "6PEzKfFs7bWP7QA0c_yYBw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 35ms (Views: 32.3ms | ActiveRecord: 0.7ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5547853899417289740)[0m
+  ↳ bin/rails:9
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateVideos (20200819211603)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (64.8ms)[0m  [1m[35mCREATE TABLE "videos" ("id" bigserial primary key, "title" character varying NOT NULL, "uploader_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200819211603_create_videos.rb:3
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX  "index_videos_on_uploader_id" ON "videos"  ("uploader_id")[0m
+  ↳ db/migrate/20200819211603_create_videos.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200819211603"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(5547853899417289740)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5547853899417289740)[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateActiveStorageTables (20200819231409)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (86.2ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200819231409_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/migrate/20200819231409_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (24.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  ↳ db/migrate/20200819231409_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/migrate/20200819231409_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20200819231409_create_active_storage_tables.active_storage.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200819231409"]]
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5547853899417289740)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mVideo Load (4.8ms)[0m  [1m[34mSELECT "videos".* FROM "videos"[0m
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mVideo Create (1.0ms)[0m  [1m[32mINSERT INTO "videos" ("title", "uploader_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Super Mario Cat Bros"], ["uploader_id", 6], ["created_at", "2020-08-19 23:33:33.887690"], ["updated_at", "2020-08-19 23:33:33.887690"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mVideo Load (0.4ms)[0m  [1m[34mSELECT "videos".* FROM "videos"[0m
+  [1m[36mVideo Load (0.3ms)[0m  [1m[34mSELECT  "videos".* FROM "videos" ORDER BY "videos"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (2.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Video"], ["name", "video"], ["LIMIT", 1]]
+[36m  Disk Storage (115.2ms) [0m[32mUploaded file to key: cu7uPJ6NyUe1JJuh1NjTDUM1 (checksum: 6bn6ckwx299ocxMnFJUqWQ==)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (11.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "cu7uPJ6NyUe1JJuh1NjTDUM1"], ["filename", "super_mario_cat_bros.mp4"], ["content_type", "video/mp4"], ["metadata", "{\"identified\":true}"], ["byte_size", 35108222], ["checksum", "6bn6ckwx299ocxMnFJUqWQ=="], ["created_at", "2020-08-19 23:36:00.785022"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Attachment Create (22.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "video"], ["record_type", "Video"], ["record_id", 1], ["blob_id", 1], ["created_at", "2020-08-19 23:36:00.820198"]]
+  [1m[36mVideo Update (0.3ms)[0m  [1m[33mUPDATE "videos" SET "updated_at" = $1 WHERE "videos"."id" = $2[0m  [["updated_at", "2020-08-19 23:36:00.844317"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 40b2dcb9-152a-4598-8698-6e283fab23c3) to Async(default) with arguments: #<GlobalID:0x00007fc876473c40 @uri=#<URI::GID gid://zoo-tube/ActiveStorage::Blob/1>>
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [40b2dcb9-152a-4598-8698-6e283fab23c3] Performing ActiveStorage::AnalyzeJob (Job ID: 40b2dcb9-152a-4598-8698-6e283fab23c3) from Async(default) with arguments: #<GlobalID:0x00007fc87cc3c430 @uri=#<URI::GID gid://zoo-tube/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [40b2dcb9-152a-4598-8698-6e283fab23c3] [36m  Disk Storage (126.4ms) [0m[34mDownloaded file from key: cu7uPJ6NyUe1JJuh1NjTDUM1[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [40b2dcb9-152a-4598-8698-6e283fab23c3] Skipping video analysis because ffmpeg isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [40b2dcb9-152a-4598-8698-6e283fab23c3]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [40b2dcb9-152a-4598-8698-6e283fab23c3]   [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [40b2dcb9-152a-4598-8698-6e283fab23c3]   [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [40b2dcb9-152a-4598-8698-6e283fab23c3] Performed ActiveStorage::AnalyzeJob (Job ID: 40b2dcb9-152a-4598-8698-6e283fab23c3) from Async(default) in 156.19ms

@@ -1,7 +1,6 @@
 .navbar {
-    height: 50px;
+    height: 55px;
     border-bottom: 1px solid lightgray;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,7 +9,6 @@
 .navbar-left {
     display: flex;
     align-items: center;
-    // border: 1px solid grey;
     margin-left: 24px;
 }
 
@@ -48,7 +46,6 @@
 }
 
 .navbar-right {
-    // border: 1px solid grey;
     margin-right: 30px;
 }
 
@@ -88,10 +85,8 @@
 
 .user-dropdown {
     position: absolute;
-    // display: none;
     border: 1px solid lightgray;
     width: 275px;
-    // height: 400px;
     right: 20px;
     top: 60px;
     display: flex;
@@ -112,16 +107,12 @@
     margin: 12px;
     padding: 2px;
     margin-right: 17px;
-    // border: 1px solid grey;
     cursor: default;
 }
 
 .user-dropdown-info {
-    // border: 1px solid grey;
-    // height: 100%;
     display: flex;
     flex-direction: column;
-    // align-items: ;
     margin: 13px 0px;
 }
 
@@ -134,10 +125,7 @@
     margin: 9px 0px;
 }
 .user-dropdown-link {
-    // padding: 5px;
-    // border: 1px solid grey;
     display: flex;
-    // justify-content: center;
     align-items: center;
     color: rgb(115, 115, 115);
     width: 100%;

@@ -1,19 +1,14 @@
 .session-form {
     margin: auto;
     margin-top: 100px;
-
     width: 425px;
     height: 500px;
     box-sizing: border-box;
-
     display: flex;
     flex-direction: column;
-
     border: 1px solid lightgrey;
     border-radius: 7px;
-    // box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
     box-shadow: 8px 2px 18px -4px rgba(0, 0, 0, 0.2), -8px 2px 18px -4px rgba(0, 0, 0, 0.2);
-
 }
 
 .session-form-header {
@@ -64,15 +59,14 @@
 
 .session-form-input {
     display: flex;
-
     height: 50px;
-
     border: 1px solid lightgrey;
     border-radius: 4px;
 }
 
 .session-form-input input {
     text-indent: 15px;
+    width: 350px;
 }
 
 .session-form-errors-list {
@@ -112,7 +106,6 @@
     padding: 10px 25px;
     color: white;
     background-color: rgb(80, 80, 255);
-
     transition-property: box-shadow;
     transition-duration: 0.3s;
 }
