@@ -7,25 +7,26 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 class Dropdown extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            open: true
-        }
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    // componentDidMount() {
-    //     document.addEventListener("click", this.handleClick, false);
-    // }
+    componentDidMount() {
+        document.addEventListener("click", this.handleClick, false);
+    }
 
-    // componentWillUnmount() {
-    //     document.removeEventListener("click", this.handleClick, false);
-    // }
+    componentWillUnmount() {
+        document.removeEventListener("click", this.handleClick, false);
+    }
 
-    // handleClick(e) {
-    //     if (!this.node.contains(e.target)) {
-    //         this.setState({ open: false});
-    //         this.props.toggleDropdownChild(this.state.open);
-    //     }
-    // }
+    handleClick(e) {
+        let userIcon = document.getElementsByClassName("user-icon")[0];
+        let userDropdown = document.getElementsByClassName("user-dropdown")[0];
+        
+        if (this.props.isVisible && !userIcon.contains(e.target) && !userDropdown.contains(e.target)) {
+             this.props.toggleVisibility();
+        }
+    }
     
     render() {
         const user = this.props.user;

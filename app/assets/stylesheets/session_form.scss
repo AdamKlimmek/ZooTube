@@ -11,9 +11,9 @@
 
     border: 1px solid lightgrey;
     border-radius: 7px;
-    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    // box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 8px 2px 18px -4px rgba(0, 0, 0, 0.2), -8px 2px 18px -4px rgba(0, 0, 0, 0.2);
 
-    font-family: Garamond;
 }
 
 .session-form-header {
@@ -44,7 +44,7 @@
 .session-form-type {
     display: flex;
     justify-content: center;
-    padding: 8px;
+    padding-top: 17px;
     font-size: 25px;
 }
 
@@ -56,7 +56,7 @@
 
 .session-form-body {
     height: 215px;
-    margin: 35px;
+    margin: 20px 35px 35px 35px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -83,7 +83,7 @@
 
 .session-form-error {
     color: red;
-    font-size: 14px;
+    font-size: 13px;
     align-items: center;
     margin: auto;
 }

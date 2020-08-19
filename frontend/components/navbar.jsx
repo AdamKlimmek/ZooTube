@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 import Dropdown from './dropdown';
 
@@ -14,26 +14,18 @@ class NavBar extends React.Component {
         }
 
         this.toggleChildVisibility = this.toggleChildVisibility.bind(this);
-        this.toggleDropdownChild = this.toggleDropdownChild.bind(this);
     }
 
     toggleChildVisibility() {
-        if (this.state.childVisible) {
-            this.setState({ childVisible: false })
-        } else {
-            this.setState({ childVisible: true })
-        }
-    }
-
-    toggleDropdownChild(childState) {
-        this.setState({ childVisible: childState });
+        this.setState({ childVisible: !this.state.childVisible })
     }
     
     render() {
         const user = this.props.currentUser;
         
         const loginLink = () => (
-            <div>
+            <div className="user-signin">
+                <FontAwesomeIcon icon={faUserCircle} />
                 <Link to='/signin'>SIGN IN</Link>
             </div>
         )
@@ -45,7 +37,7 @@ class NavBar extends React.Component {
                     user={this.props.currentUser}
                     signout={this.props.signout}
                     isVisible={this.state.childVisible}
-                    toggleDropdownChild={this.toggleDropdownChild}
+                    toggleVisibility={this.toggleChildVisibility}
                 />
             </div>
             

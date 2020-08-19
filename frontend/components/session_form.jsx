@@ -33,7 +33,7 @@ class SessionForm extends React.Component {
 
     handleDemoLogin() {
         this.setState({ 
-            email: 'demo.user@demo.io',
+            email: 'demo.user@demo.com',
             password: 'password'
         });
         setTimeout(() => {
