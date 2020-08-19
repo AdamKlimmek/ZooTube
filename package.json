@@ -1,5 +1,5 @@
 {
-    "name": "my_youtube",
+    "name": "ZooTube",
     "version": "1.0.0",
     "description": "youtube clone",
     "main": "index.js",

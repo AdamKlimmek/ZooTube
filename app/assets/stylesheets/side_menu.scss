@@ -1,0 +1,30 @@
+.side-menu {
+    width: 65px;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    background: rgb(250, 250, 250);
+}
+
+.side-menu-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(115, 115, 115);
+    height: 75px;
+    width: 65px;
+}
+
+.side-menu-link svg {
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+
+.side-menu-link span {
+    font-size: 14px;
+}
+
+.side-menu-link:hover {
+    background: rgb(220, 220, 220);
+}

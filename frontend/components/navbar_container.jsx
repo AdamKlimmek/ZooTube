@@ -8,7 +8,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    // signin: (formUser) => dispatch(signin(formUser)),
     signout: () => dispatch(signout())
 });
 

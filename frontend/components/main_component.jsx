@@ -1,17 +1,14 @@
 import React from 'react';
 
 import NavBarContainer from './navbar_container';
+import SideMenuContainer from './side_menu_container';
 
 const MainComponent = () => {
     return (
-        <div className="Main Component">
+        <div>
             <NavBarContainer />
-
-            <br/>
-            <br/>
-
-            <div>
-                Welcome to YouTube!
+            <div className="main-app-container">
+                <SideMenuContainer />
             </div>
         </div>
     );

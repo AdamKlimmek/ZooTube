@@ -17,10 +17,11 @@
 }
 
 .session-form-header {
-    // border: 1px solid grey;
-
     margin: 35px 35px 0px 35px;
-
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 .session-form-logo {
@@ -54,22 +55,17 @@
 }
 
 .session-form-body {
-    // border: 1px solid grey;
     height: 215px;
     margin: 35px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
 }
 
 .session-form-input {
     display: flex;
-    // justify-content: center;
 
     height: 50px;
-    // margin: 0px 35px;
-    // text-indent: 5px;;
 
     border: 1px solid lightgrey;
     border-radius: 4px;
@@ -81,7 +77,6 @@
 
 .session-form-errors-list {
     display: flex;
-    // justify-content: center;
     flex-direction: column;
     margin: 0px 35px;
 }
@@ -89,17 +84,12 @@
 .session-form-error {
     color: red;
     font-size: 14px;
-    // justify-content: center;
     align-items: center;
     margin: auto;
-
 }
 
 .session-form-footer {
-    // border: 1px solid grey;
-
     margin: 35px;
-
 }
 
 .session-form-links-and-buttons {

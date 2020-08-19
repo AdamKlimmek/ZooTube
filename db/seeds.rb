@@ -28,6 +28,18 @@ u3 = User.create!(
 
 u4 = User.create!(
   username: 'DemoUser',
-  email: 'demo.user@demo.io',
+  email: 'demo.user@demo.com',
+  password: 'password'
+)
+
+u5 = User.create!(
+  username: 'DogLoverMo',
+  email: 'morgan@hotmail.com',
+  password: 'password'
+)
+
+u6 = User.create!(
+  username: 'CatPerson9',
+  email: 'crazycatlady@aol.com',
   password: 'password'
 )
