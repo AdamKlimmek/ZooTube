@@ -1,5 +1,5 @@
 class Video < ApplicationRecord
-    validates :title, :uploader_id, :views presence: true
+    validates :title, :uploader_id, :views, presence: true
 
     validate :ensure_video
     validate :ensure_thumbnail
