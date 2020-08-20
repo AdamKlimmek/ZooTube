@@ -47,7 +47,16 @@
 
 .navbar-right {
     margin-right: 30px;
+    display: flex;
+    align-items: center;
 }
+
+.navbar-upload-video {
+    font-size: 21px;
+    color: rgb(100, 100, 100);
+    margin-right: 24px;
+}
+
 
 .user-signin {
     color: rgb(80, 80, 255);
@@ -87,8 +96,8 @@
     position: absolute;
     border: 1px solid lightgray;
     width: 275px;
-    right: 20px;
-    top: 60px;
+    right: 23px;
+    top: 63px;
     display: flex;
     flex-direction: column;
     box-shadow: 8px 2px 18px -4px rgba(0, 0, 0, 0.2), -8px 2px 18px -4px rgba(0, 0, 0, 0.2);

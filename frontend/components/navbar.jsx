@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faBars, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUserCircle, faVideo } from '@fortawesome/free-solid-svg-icons';
 
 import Dropdown from './dropdown';
 
@@ -58,6 +58,10 @@ class NavBar extends React.Component {
                 </div>
 
                 <div className="navbar-right">
+                    <Link to="/videos/new">
+                        <FontAwesomeIcon icon={faVideo} className="navbar-upload-video" />
+                    </Link>
+
                     {(user) ? profileIcon() : loginLink()}
                 </div>
             </div>

@@ -1,1 +1,1 @@
-json.extract! @video, :id, :title, :uploader_id
+json.partial! "api/videos/video", video: @video

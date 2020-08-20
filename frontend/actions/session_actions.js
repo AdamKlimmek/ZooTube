@@ -1,4 +1,4 @@
-import * as APIUtil from '../util/session_api_util';
+import * as UsersApiUtil from '../util/session_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
@@ -24,7 +24,7 @@ export const clearErrors = () => ({
 });
 
 export const signup = (formUser) => dispatch => (
-    APIUtil.postUser(formUser).then((user) => (
+    UsersApiUtil.postUser(formUser).then((user) => (
         dispatch(receiveCurrentUser(user))
     ), err => (
         dispatch(receiveErrors(err.responseJSON))
@@ -32,7 +32,7 @@ export const signup = (formUser) => dispatch => (
 );
 
 export const signin = (formUser) => dispatch => (
-    APIUtil.postSession(formUser).then((user) => (
+    UsersApiUtil.postSession(formUser).then((user) => (
         dispatch(receiveCurrentUser(user))
     ), err => (
         dispatch(receiveErrors(err.responseJSON))
@@ -40,7 +40,7 @@ export const signin = (formUser) => dispatch => (
 );
 
 export const signout = () => dispatch => (
-    APIUtil.deleteSession().then(() => (
+    UsersApiUtil.deleteSession().then(() => (
         dispatch(logoutCurrentUser())
     ))
 );
