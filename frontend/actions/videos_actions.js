@@ -31,37 +31,34 @@ export const clearErrors = () => ({
 });
 
 export const fetchVideos = () => dispatch => (
-    VideosApiUtil.fetchVideos().then((videos) => (
-        dispatch(receiveAllVideos(videos))
-    ))
+    VideosApiUtil.fetchVideos().then(
+        videos => dispatch(receiveAllVideos(videos))
+    )
 );
 
 export const fetchVideo = (videoId) => dispatch => (
-    VideosApiUtil.fetchVideo(videoId).then((video) => (
-        dispatch(receiveVideo(video))
-    ))
+    VideosApiUtil.fetchVideo(videoId).then(
+        video => dispatch(receiveVideo(video))
+    )
 );
 
-export const postVideo = (formVideo) => dispatch => (
-    VideosApiUtil.postVideo(formVideo).then((video) => (
-        dispatch(receiveVideo(video))
-    ), err => (
-        dispatch(receiveErrors(err.responseJSON))
-    ))
+export const postVideo = (formData) => dispatch => (
+    VideosApiUtil.postVideo(formData).then(
+        video => dispatch(receiveVideo(video)),
+        errors => dispatch(receiveErrors(errors))
+    )
 );
 
-export const patchVideo = (formVideo) => dispatch => (
-    VideosApiUtil.patchVideo(formVideo).then((video) => (
-        dispatch(receiveVideo(video))
-    ), err => (
-        dispatch(receiveErrors(err.responseJSON))
-    ))
+export const patchVideo = (formData, video) => dispatch => (
+    VideosApiUtil.patchVideo(formData, video).then(
+        video => dispatch(receiveVideo(video)),
+        errors => dispatch(receiveErrors(errors))
+    )
 );
 
 export const deleteVideo = (videoId) => dispatch => (
-    VideosApiUtil.deleteVideo(videoId).then((video) => (
-        dispatch(removeVideo(video.id))
-    ), err => (
-        dispatch(receiveErrors(err.responseJSON))
-    ))
+    VideosApiUtil.deleteVideo(videoId).then(
+        video => dispatch(removeVideo(video.id)),
+        errors => dispatch(receiveErrors(errors))
+    )
 );

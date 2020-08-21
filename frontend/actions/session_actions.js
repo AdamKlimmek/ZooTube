@@ -24,23 +24,22 @@ export const clearErrors = () => ({
 });
 
 export const signup = (formUser) => dispatch => (
-    UsersApiUtil.postUser(formUser).then((user) => (
-        dispatch(receiveCurrentUser(user))
-    ), err => (
-        dispatch(receiveErrors(err.responseJSON))
-    ))
+    UsersApiUtil.postUser(formUser).then(
+        user => dispatch(receiveCurrentUser(user)),
+        errors => dispatch(receiveErrors(errors))
+    )
 );
 
 export const signin = (formUser) => dispatch => (
-    UsersApiUtil.postSession(formUser).then((user) => (
-        dispatch(receiveCurrentUser(user))
-    ), err => (
-        dispatch(receiveErrors(err.responseJSON))
-    ))
+    UsersApiUtil.postSession(formUser).then(
+        user => dispatch(receiveCurrentUser(user)),
+        errors => dispatch(receiveErrors(errors))
+    )
 );
 
 export const signout = () => dispatch => (
-    UsersApiUtil.deleteSession().then(() => (
-        dispatch(logoutCurrentUser())
-    ))
+    UsersApiUtil.deleteSession().then(
+        () => dispatch(logoutCurrentUser()),
+        errors => dispatch(receiveErrors(errors))
+    )
 );

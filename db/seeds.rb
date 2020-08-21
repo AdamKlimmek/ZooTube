@@ -43,3 +43,5 @@ u6 = User.create!(
   email: 'crazycatlady@aol.com',
   password: 'password'
 )
+
+Video.delete_all
