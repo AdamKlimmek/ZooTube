@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, HashRouter } from 'react-router-dom';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SigninFormContainer from './signin_form_container';
@@ -14,8 +14,7 @@ const App = () => (
             <AuthRoute path="/signin" component={SigninFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
             <ProtectedRoute path="/videos/new" component={CreateVideoFormContainer} />
-
-            <Route path="/videos/:videoId/edit" component={EditVideoFormContainer} />
+            <ProtectedRoute path="/videos/:videoId/edit" component={EditVideoFormContainer} />
             <Route path='/' component={MainComponent} />
             <Redirect to='/' />
         </Switch> 

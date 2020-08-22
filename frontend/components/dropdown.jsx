@@ -50,15 +50,15 @@ class Dropdown extends React.Component {
                 </div>
 
                 <div className="user-dropdown-links">
-                    <a href="/" className="user-dropdown-link">
+                    <Link to="/" replace className="user-dropdown-link">
                         <FontAwesomeIcon icon={faHome} className="user-dropdown-link-icon"/>
                         <span>Home</span>
-                    </a>
+                    </Link>
 
-                    <a href="/" className="user-dropdown-link">
-                        <FontAwesomeIcon icon={faVideo} className="user-dropdown-link-icon"/>
+                    <Link to="/videos/new" className="user-dropdown-link">
+                        <FontAwesomeIcon icon={faVideo} className="user-dropdown-link-icon" />
                         <span>Upload</span>
-                    </a>
+                    </Link>
 
                     <a href="https://github.com/AdamKlimmek/" className="user-dropdown-link" target="_blank">
                         <FontAwesomeIcon icon={faGithub} className="user-dropdown-link-icon"/>

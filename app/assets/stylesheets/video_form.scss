@@ -10,19 +10,11 @@
     box-shadow: 8px 2px 18px -4px rgba(0, 0, 0, 0.2), -8px 2px 18px -4px rgba(0, 0, 0, 0.2);
 }
 
-img {
-    // height: 100%;
-    width: 100%;
-    height: auto;
-    // width: auto;
-}
-
 .video-form-header {
     margin: 35px 35px 0px 35px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // border: 1px solid grey;
 }
 
 .video-form-header span {
@@ -36,20 +28,22 @@ img {
 .video-form-header button {
     font-size: 28px;
     font-weight: bold;
-    color: rgb(115, 115, 115);
-    padding-right: 10px;
+    color: rgb(130, 130, 130);
+    padding-right: 3px;
+    position: relative;
+    bottom: 3px;
 }
 
 .video-form-header button:hover {
-    color: rgb(55, 55, 55);
+    color: rgb(75, 75, 75);
 }
 
 .video-form-upper-body {
     margin: 35px 35px 0px 35px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    // border: 1px solid grey;
+    // justify-content: space-between;
+    justify-content: center;
 }
 
 #video-form-video-input, #video-form-thumbnail-input {
@@ -63,6 +57,8 @@ img {
     background: rgb(240, 240, 240);
     padding: 70px 130px;
     cursor: pointer;
+    margin-right: 29px;
+    margin-left: 29px;
 }
 
 .video-attachment-state:hover, .thumbnail-attachment-state:hover {
@@ -72,17 +68,41 @@ img {
 
 .check-mark {
     color: rgb(3, 189, 25);
-    border: 3px solid rgb(3, 189, 25);
+    border: 3px solid lightgray;
     border-radius: 3px;
     font-size: 40px;
     background: rgb(240, 240, 240);
-    padding: 70px 130px;
+    padding: 70px 133px;
     cursor: pointer;
+    margin-right: 29px;
+    margin-left: 29px;
+}
+
+.check-mark:hover {
+    border: 3px solid rgb(80, 80, 255);
 }
 
 .attached-image {
-    width: 295px;
-    height: 170px;
+    box-sizing: border-box;
+    height: 186px;
+    width: 306px;
+    border: 3px solid lightgray;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 29px;
+    margin-left: 29px;
+}
+
+.attached-image img {
+    flex-shrink: 0;
+    height: 180px;
+    width: 300px;
+    overflow: hidden;
+}
+
+.attached-image:hover {
+    color: rgb(80, 80, 255);
+    border: 3px solid rgb(80, 80, 255);
 }
 
 .video-form-lower-body {
@@ -98,17 +118,17 @@ img {
 .video-form-title-input {
     height: 35px;
     border: 1px solid lightgrey;
-    border-radius: 4px;
+    border-radius: 3px;
     text-indent: 12px;
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .video-form-description-input {
     height: 120px;
     padding: 8px 0 0px 0px;
     border: 1px solid lightgrey;
-    border-radius: 4px;
+    border-radius: 3px;
     text-indent: 12px;
     font-size: 14px;
     resize: none;
@@ -127,6 +147,10 @@ img {
     font-size: 13px;
     align-items: center;
     margin: auto;
+}
+
+.video-form-error:first-child {
+    margin-top: 10px;
 }
 
 .video-form-footer {

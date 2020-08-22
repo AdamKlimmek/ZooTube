@@ -29,7 +29,7 @@ class EditVideoForm extends React.Component {
     }
     
     render() {
-        const { video, formType, errors, processForm, clearErrors } = this.props;
+        const { video, formType, errors, processForm, clearErrors, deleteVideo } = this.props;
         if (!video) return null;
         
         return (
@@ -39,6 +39,7 @@ class EditVideoForm extends React.Component {
             errors={errors}
             processForm={processForm}
             clearErrors={clearErrors}
+            deleteVideo={deleteVideo}
             />
         );
     };

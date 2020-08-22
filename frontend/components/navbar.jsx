@@ -29,7 +29,7 @@ class NavBar extends React.Component {
                 <Link to='/signin'>SIGN IN</Link>
             </div>
         )
-        
+
         const profileIcon = () => (
             <div className="user">
                 <div className="user-icon" onClick={this.toggleChildVisibility}>{user.username[0].toUpperCase()}</div>
@@ -38,19 +38,19 @@ class NavBar extends React.Component {
                     signout={this.props.signout}
                     isVisible={this.state.childVisible}
                     toggleVisibility={this.toggleChildVisibility}
-                />
+                    />
             </div>
-            
         )
-
+        
+        
         return (
             <div className="navbar">
                 <div className="navbar-left">
                     <FontAwesomeIcon icon={faBars} className="navbar-bars-icon"/>
-                    <div className="navbar-logo">
+                    <Link to="/" replace className="navbar-logo">
                         <FontAwesomeIcon icon={faYoutube} />
                         <span>ZooTube</span>
-                    </div>
+                    </Link>
                 </div>
 
                 <div className="navbar-search">

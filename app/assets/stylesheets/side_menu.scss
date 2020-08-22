@@ -1,9 +1,13 @@
 .side-menu {
+    position: fixed;
+    top: 55px;
     width: 65px;
-    height: 1000px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    background: rgb(250, 250, 250);
+    background: rgb(245, 245, 245);
+    z-index: 1;
+    position:fixed;
 }
 
 .side-menu-link {
@@ -11,18 +15,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: rgb(115, 115, 115);
+    color: rgb(100, 100, 100);
     height: 75px;
     width: 65px;
 }
 
 .side-menu-link svg {
-    font-size: 17px;
+    font-size: 16px;
     margin-bottom: 2px;
 }
 
 .side-menu-link span {
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .side-menu-link:hover {

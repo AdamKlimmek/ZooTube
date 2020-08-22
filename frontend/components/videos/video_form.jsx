@@ -4,7 +4,6 @@ import { withRouter } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVideo, faCheck, faCamera, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-
 class VideoForm extends React.Component {
     constructor(props) {
         super(props);
@@ -19,6 +18,7 @@ class VideoForm extends React.Component {
         this.handleVideoFile = this.handleVideoFile.bind(this);
         this.handleThumbnailFile = this.handleThumbnailFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -63,10 +63,20 @@ class VideoForm extends React.Component {
         formData.append('video[thumbnail]', this.state.thumbnailFile);
 
         if (this.props.formType === "Upload") {
-            this.props.processForm(formData)
+            this.props.processForm(formData).then(
+                () => this.props.history.push('/')
+            )
         } else {
-            this.props.processForm(formData, this.props.video)
+            this.props.processForm(formData, this.props.video).then(
+                () => this.props.history.push('/')
+            )
         }
+    }
+
+    handleDelete(e) {
+        e.preventDefault();
+        this.props.deleteVideo(this.props.match.params.videoId);
+        this.props.history.push('/');
     }
     
     render() {
@@ -97,14 +107,14 @@ class VideoForm extends React.Component {
         if (this.props.formType === "Upload") {
             deleteButton = <div></div>
         } else {
-            deleteButton = <button className="video-form-button">Delete</button>
+            deleteButton = <button className="video-form-button" onClick={this.handleDelete}>Delete</button>
         }
 
         return (
             <div className="video-form">
                 <div className="video-form-header">
                     <span>{this.props.formType} video</span>
-                    <button>x</button>
+                    <button onClick={e => this.props.history.push('/')}>x</button>
                 </div>
 
                 <form onSubmit={this.handleSubmit}>
@@ -162,4 +172,4 @@ class VideoForm extends React.Component {
     }
 };
 
-export default VideoForm;
+export default withRouter(VideoForm);

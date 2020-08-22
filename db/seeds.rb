@@ -33,7 +33,7 @@ u4 = User.create!(
 )
 
 u5 = User.create!(
-  username: 'DogLoverMo',
+  username: 'LoverOfDogs',
   email: 'morgan@hotmail.com',
   password: 'password'
 )

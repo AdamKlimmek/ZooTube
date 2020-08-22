@@ -40,7 +40,7 @@ class Api::VideosController < ApplicationController
         if @video.update_attributes(video_params_edit)
             render :show
         else
-            render @video.errors.full_messages, state: 422
+            render json: @video.errors.full_messages, status: 422
         end
     end
 
