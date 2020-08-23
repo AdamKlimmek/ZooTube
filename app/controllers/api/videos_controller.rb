@@ -44,6 +44,16 @@ class Api::VideosController < ApplicationController
         end
     end
 
+    def update_views
+        @video = Video.find(params[:id])
+
+        if @video.update_attributes(video_params_update_views)
+            render :show
+        else
+            render json: @video.errors.full_messages, status: 422
+        end
+    end
+
     def destroy
         @video = Video.find(params[:id])
 
@@ -63,5 +73,9 @@ class Api::VideosController < ApplicationController
     
     def video_params_edit
         params.require(:video).permit(:title, :description, :views, :uploader_id, :thumbnail)
+    end
+
+    def video_params_update_views
+        params.require(:video).permit(:views)
     end
 end

@@ -68,7 +68,7 @@ class VideoForm extends React.Component {
             )
         } else {
             this.props.processForm(formData, this.props.video).then(
-                () => this.props.history.push('/')
+                () => this.props.history.goBack()
             )
         }
     }
@@ -114,7 +114,7 @@ class VideoForm extends React.Component {
             <div className="video-form">
                 <div className="video-form-header">
                     <span>{this.props.formType} video</span>
-                    <button onClick={e => this.props.history.push('/')}>x</button>
+                    <button onClick={e => this.props.history.goBack()}>x</button>
                 </div>
 
                 <form onSubmit={this.handleSubmit}>

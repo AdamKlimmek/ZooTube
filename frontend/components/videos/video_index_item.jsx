@@ -35,7 +35,7 @@ class VideoIndexItem extends React.Component {
 
                         <div className="video-index-item-other-data"> 
                             <span className="video-index-item-views-count">{video.views} views</span>
-                            <FontAwesomeIcon icon={faCircle} className="video-index-item-circle-divider" />
+                            <FontAwesomeIcon icon={faCircle} className="video-circle-divider" />
                             <span className="video-index-item-creation-date">{video.creationDate}</span>
                         </div>
                     </div>

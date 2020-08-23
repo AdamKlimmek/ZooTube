@@ -1,32 +1,24 @@
 .video-index {
     background: rgb(249, 249, 249);
-    // width: 90%;
-    margin: auto;
-    position: relative;
-    left: 60px;
-    margin-right: 60px;
-    // right: 60px;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    // border: 1px solid grey;
-    // padding-left: 5%;
-    // padding-right: 5%;
-    padding-top: 55px;
+    align-content: flex-start;
+    padding: 55px 55px 55px 55px;
 }
 
 .video-index-item {
     box-sizing: border-box;
-    margin: 5px;
+    margin: 4px;
     display: flex;
-    height: 230px;
-    width: 260px;
+    height: 220px;
+    width: 240px;
     flex-direction: column;
-    // border: 1px solid grey;
 }
 
 .video-index-item-thumbnail img {
-    height: 149px;
-    width: 258px;
+    height: 129px;
+    width: 238px;
 }
 
 .video-index-item-body {
@@ -68,7 +60,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 210px;
+    width: 190px;
 }
 
 .video-index-item-other-data {
@@ -76,7 +68,7 @@
     align-items: center;
 }
 
-.video-index-item-circle-divider {
+.video-circle-divider {
     font-size: 4px;
     margin: 0 7px 0 7px;
 }

@@ -8,6 +8,8 @@
     z-index: 1;
     top: 0;
     background: white;
+    box-shadow: 0 1px 10px hsl(0, 0%, 90%);
+
 }
 
 .navbar-left {
@@ -57,18 +59,19 @@
     margin-right: 30px;
     display: flex;
     align-items: center;
+    cursor: default;
 }
 
 .navbar-upload-video {
     font-size: 21px;
     color: rgb(100, 100, 100);
-    margin-right: 40px;
+    // padding-right: 40px;
+    cursor: pointer;
 }
 
 .navbar-upload-video:hover {
     color: rgb(80, 80, 80);
 }
-
 
 .user-signin {
     color: rgb(80, 80, 255);
@@ -76,6 +79,7 @@
     padding: 4.5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-left: 40px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -83,11 +87,11 @@
 
 .user-signin svg {
     font-size: 22px;
-    margin-right: 6px;
+    margin-right: 6px;   
 }
 
 .user-icon {
-    background: #3e9401;
+    background: green;
     border-radius: 100%;
     color: white;
     text-align: center;
@@ -99,6 +103,7 @@
     line-height: 34.5px;
     position: relative;
     cursor: pointer;
+    margin-left: 40px;
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */

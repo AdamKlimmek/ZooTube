@@ -32,6 +32,14 @@ export const patchVideo = (formData, video) => (
     })
 );
 
+export const patchVideoViews = (video) => (
+    $.ajax({
+        method: 'PATCH',
+        url: `/api/videos/${video.id}/views`,
+        data: { video },
+    })
+);
+
 export const deleteVideo = (videoId) => (
     $.ajax({
         method: 'DELETE',

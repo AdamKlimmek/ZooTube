@@ -56,6 +56,13 @@ export const patchVideo = (formData, video) => dispatch => (
     )
 );
 
+export const patchVideoViews = (video) => dispatch => (
+    VideosApiUtil.patchVideoViews(video).then(
+        (video) => dispatch(receiveVideo(video)),
+        errors => dispatch(receiveErrors(errors))
+    )
+);
+
 export const deleteVideo = (videoId) => dispatch => (
     VideosApiUtil.deleteVideo(videoId).then(
         video => dispatch(removeVideo(video.id)),

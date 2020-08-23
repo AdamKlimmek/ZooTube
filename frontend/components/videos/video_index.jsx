@@ -1,6 +1,7 @@
 import React from 'react';
 
 import VideoIndexItem from './video_index_item';
+import { Link } from 'react-router-dom';
 
 class VideoIndex extends React.Component {
     constructor(props) {
@@ -15,7 +16,9 @@ class VideoIndex extends React.Component {
         return (
             <div className="video-index">
                 {this.props.videos.map(video => (
-                    <VideoIndexItem video={video} fetchVideo={this.props.fetchVideo} key={video.id}/>
+                    <Link to={`/videos/${video.id}`} key={video.id}>
+                        <VideoIndexItem video={video} fetchVideo={this.props.fetchVideo}  />
+                    </Link>
                 ))}
             </div>
         )

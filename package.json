@@ -1,7 +1,7 @@
 {
     "name": "ZooTube",
     "version": "1.0.0",
-    "description": "youtube clone",
+    "description": "YouTube clone",
     "main": "index.js",
     "engines": {
         "node": "10.13.0",
