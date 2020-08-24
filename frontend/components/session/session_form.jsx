@@ -59,7 +59,7 @@ class SessionForm extends React.Component {
                 </div>
         } else {
             usernameField = null;
-            demoUser = <button className="session-form-button" onClick={this.handleDemoLogin}>Demo</button>
+            demoUser = <button className="session-form-button" onClick={this.handleDemoLogin} onKeyDown={e => e.key !== 'Enter'}>Demo</button>
         };
     
         return (

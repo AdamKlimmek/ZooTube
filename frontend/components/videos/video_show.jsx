@@ -64,6 +64,7 @@ class VideoShow extends React.Component {
                             src={video.videoURL}
                             controls
                             height="500"
+                            width="900"
                             autoPlay
                             onEnded={this.handleVideoEnded}
                         ></video>

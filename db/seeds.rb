@@ -1,47 +1,67 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
 
-User.delete_all
+ActiveRecord::Base.transaction do
+  
+  User.delete_all
+  Video.delete_all
 
-u1 = User.create!(
-  username: 'AdamK',
-  email: 'aklimmek@mac.com',
-  password: 'password'
-)
+  u1 = User.create!(
+    username: 'AdamK',
+    email: 'aklimmek@mac.com',
+    password: 'password'
+  )
+  
+  u2 = User.create!(
+    username: 'User2',
+    email: 'adam.d.klimmek@gmail.com',
+    password: 'password'
+  )
+  
+  u3 = User.create!(
+    username: 'TechGeek12',
+    email: 'dontsellmy@info.com',
+    password: 'password'
+  )
+  
+  u4 = User.create!(
+    username: 'DemoUser',
+    email: 'demo.user@demo.com',
+    password: 'password'
+  )
+  
+  u5 = User.create!(
+    username: 'LoverOfDogs',
+    email: 'morgan@hotmail.com',
+    password: 'password'
+  )
+  
+  u6 = User.create!(
+    username: 'CatPerson9',
+    email: 'crazycatlady@aol.com',
+    password: 'password'
+  )
 
-u2 = User.create!(
-  username: 'User2',
-  email: 'adam.d.klimmek@gmail.com',
-  password: 'password'
-)
 
-u3 = User.create!(
-  username: 'TechGeek12',
-  email: 'dontsellmy@info.com',
-  password: 'password'
-)
 
-u4 = User.create!(
-  username: 'DemoUser',
-  email: 'demo.user@demo.com',
-  password: 'password'
-)
+  v1 = Video.create!(
+    title: 'Piano Cat',
+    description: 'Just a cat that likes to jam.',
+    uploader_id: u6.id,
+    views: 785
+  )
 
-u5 = User.create!(
-  username: 'LoverOfDogs',
-  email: 'morgan@hotmail.com',
-  password: 'password'
-)
+  v2 = Video.create!(
+    title: 'Psycho Chihuahua',
+    description: 'Beware of dog.',
+    uploader_id: u5.id,
+    views: 432
+  )
 
-u6 = User.create!(
-  username: 'CatPerson9',
-  email: 'crazycatlady@aol.com',
-  password: 'password'
-)
+  Video.all.each_with_index do |video, idx|
+    video_file = open("https://zootube-pro.s3-us-west-1.amazonaws.com/0#{idx+1}-video.mp4")
+    video.video.attach(io: video_file, filename: "0#{idx+1}-videos.mp4")
+    thumbnail_file = open("https://zootube-pro.s3-us-west-1.amazonaws.com/0#{idx+1}-thumbnail.jpeg")
+    video.thumbnail.attach(io: thumbnail_file, filename: "0#{idx+1}-thumbnails.jpeg")
+  end
 
-Video.delete_all
+end

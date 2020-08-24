@@ -8,8 +8,9 @@
 }
 
 .video-player {
-    max-width: 889px;
+    max-width: 900px;
     outline: none;
+    background: black;
 }
 
 .video-show-details {
@@ -102,6 +103,7 @@
 .video-description {
     padding: 15px 0 20px 46px;
     color: rgb(25, 25, 25);
+    font-size: 14px;
 }
 
 // video show index and index items
