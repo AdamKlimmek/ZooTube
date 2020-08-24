@@ -1,33 +1,28 @@
-.video-show {
+.video-show-content {
     display: flex;
 }
 
 .video-show-left-col {
     margin-top: 55px;
-    // border: 1px solid grey;
-    padding: 25px 25px 25px 35px;
-    // display: flex;
-    // flex-direction: column;
+    padding: 25px 25px 25px 40px;
 }
 
 .video-player {
-    // padding-bottom: 15px;
+    max-width: 889px;
+    outline: none;
 }
 
 .video-show-details {
-    // border: 1px solid grey;
     padding-top: 15px;
 }
 
 .video-show-details-top {
-    // border: 1px solid grey;
     border-bottom: 1px solid lightgray;
 }
 
 .video-title-edit {
     display: flex;
     flex-direction: row;
-    // align-items: center;
     justify-content: space-between;
 }
 
@@ -70,10 +65,7 @@
 }
 
 .video-show-details-bottom {
-    // border: 1px solid grey;
     border-bottom: 1px solid lightgray;
-    // display: flex;
-    // flex-direction: row;
     padding-top: 15px;
 }
 
@@ -112,7 +104,7 @@
     color: rgb(25, 25, 25);
 }
 
-// video show index items
+// video show index and index items
 
 .video-show-right-col {
     margin-top: 55px;
@@ -120,10 +112,54 @@
 }
 
 .video-show-index-up-next {
+    margin-bottom: 15px;
+}
 
+.video-show-index-link:first-child .video-show-index-item {
+    padding-bottom: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+.video-show-index-link:nth-child(2) .video-show-index-item {
+    padding-top: 12px;
+}
+
+.video-show-index-item {
+    display: flex;
+    flex-direction: row;
+    margin: 8px 0;
+    cursor: pointer;
 }
 
 .video-show-index-item-thumbnail img {
     height: 129px;
-    width: 238px;
+    width: 210px;
+}
+
+.video-show-index-item-details {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-show-index-item-title {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.video-show-index-item-uploader-username {
+    font-size: 14px;
+    color: rgb(100, 100, 100);
+    padding: 7px 0 4px 0;
+}
+
+.video-show-index-item-stats {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: rgb(100, 100, 100);
+}
+
+.video-show-index-item-views-count {
+    font-size: 14px;
 }

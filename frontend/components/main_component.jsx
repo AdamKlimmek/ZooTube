@@ -6,9 +6,9 @@ import VideoIndexContainer from './videos/video_index_container';
 
 const MainComponent = () => {
     return (
-        <div>
+        <div className="main-component">
             <NavBarContainer />
-            <div className="main-component">
+            <div className="main-content">
                 <SideMenuContainer />
 
                 <VideoIndexContainer />

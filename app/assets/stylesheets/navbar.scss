@@ -9,7 +9,6 @@
     top: 0;
     background: white;
     box-shadow: 0 1px 10px hsl(0, 0%, 90%);
-
 }
 
 .navbar-left {
@@ -19,7 +18,7 @@
 }
 
 .navbar-bars-icon {
-    margin-right: 40px;
+    margin-right: 25px;
     color: rgb(90, 90, 90);
     font-size: 21px;
     cursor: pointer;
@@ -42,18 +41,22 @@
 
 .navbar-logo svg {
     color: red;
-    font-size: 23px;
+    font-size: 22px;
     margin-right: 3px;
 }
 
 .navbar-logo span {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 21px;
 }
+
+
 
 .navbar-search {
     border: 1px solid grey;
 }
+
+
 
 .navbar-right {
     margin-right: 30px;
@@ -103,12 +106,14 @@
     line-height: 34.5px;
     position: relative;
     cursor: pointer;
-    margin-left: 40px;
+    margin-left: 25px;
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
 }
+
+
 
 .user-dropdown {
     position: absolute;
@@ -119,10 +124,6 @@
     display: flex;
     flex-direction: column;
     box-shadow: 8px 2px 18px -4px rgba(0, 0, 0, 0.2), -8px 2px 18px -4px rgba(0, 0, 0, 0.2);
-}
-
-.hidden {
-    display: none;
 }
 
 .user-dropdown-header {
@@ -151,6 +152,7 @@
 .user-dropdown-links {
     margin: 9px 0px;
 }
+
 .user-dropdown-link {
     display: flex;
     align-items: center;
@@ -162,6 +164,7 @@
 .user-dropdown-link:hover {
     background: rgb(220, 220, 220);
 }
+
 .user-dropdown-link-icon {
     padding: 10px;
     margin: 0px 9px;

@@ -1,7 +1,8 @@
-import { TOGGLE_SIDE_MENU } from '../../actions/ui_actions';
+import { TOGGLE_SIDE_MENU, TOGGLE_SHOW_PAGE } from '../../actions/ui_actions';
 
 const defaultUI = {
-    sideMenuSmall: true
+    sideMenuSmall: true,
+    onShowPage: false,
 };
 
 const uiReducer = (oldState = defaultUI, action) => {
@@ -9,7 +10,9 @@ const uiReducer = (oldState = defaultUI, action) => {
 
     switch (action.type) {
         case TOGGLE_SIDE_MENU:
-            return Object.assign({}, { sideMenuSmall: !oldState.sideMenuSmall });
+            return Object.assign({}, oldState, { sideMenuSmall: !oldState.sideMenuSmall });
+        case TOGGLE_SHOW_PAGE:
+            return Object.assign({}, oldState, { onShowPage: !oldState.onShowPage });
         default:
             return oldState;
     }

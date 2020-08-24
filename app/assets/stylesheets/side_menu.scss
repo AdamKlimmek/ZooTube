@@ -1,3 +1,14 @@
+.side-menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.hidden-side-menu, .hidden-spacer, .modal-spacer {
+    display: none;
+}
+
+
+
 .small-side-menu {
     top: 55px;
     width: 65px;
@@ -5,6 +16,7 @@
     display: flex;
     flex-direction: column;
     background: rgb(242, 242, 242);
+    position: fixed;
 }
 
 .small-side-menu .side-menu-link {
@@ -30,6 +42,11 @@
     background: rgb(220, 220, 220);
 }
 
+.small-spacer {
+    height: 100vh;
+    width: 65px;
+}
+
 
 
 .large-side-menu {
@@ -39,6 +56,7 @@
     display: flex;
     flex-direction: column;
     background: rgb(242, 242, 242);
+    position: fixed;
 }
 
 .large-side-menu .side-menu-link {
@@ -61,4 +79,58 @@
 
 .large-side-menu .side-menu-link span {
     font-size: 17px;
+}
+
+.large-spacer {
+    height: 100vh;
+    width: 170px;
+}
+
+
+
+.modal-screen {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    bottom: 0;
+    left: 200px;
+    right: 0;
+    z-index: 2;
+}
+
+.modal-side-menu {
+    position: fixed;
+    z-index: 3;
+    top: 55px;
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: rgb(242, 242, 242);
+}
+
+.modal-side-menu .side-menu-link {
+    display: flex;
+    align-items: center;
+    color: rgb(100, 100, 100);
+    height: 60px;
+    width: 200px;
+}
+
+.modal-side-menu .side-menu-link:first-child {
+    margin-top: 5px;
+}
+
+.modal-side-menu .side-menu-link svg {
+    font-size: 16px;
+    margin-bottom: 2px;
+    padding: 25px 30px 25px 25px;
+}
+
+.modal-side-menu .side-menu-link span {
+    font-size: 17px;
+}
+
+.modal-side-menu .side-menu-link:hover {
+    background: rgb(220, 220, 220);
 }

@@ -5,26 +5,36 @@ import { withRouter } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import NavBarContainer from '../navbar/navbar_container';
+import SideMenuContainer from '../sidemenu/side_menu_container'
 import VideoShowIndexItem from './video_show_index_item';
 
 class VideoShow extends React.Component {
     constructor(props) {
         super(props);
 
-        this.handleUpdateViews = this.handleUpdateViews.bind(this);
+        this.handleVideoEnded = this.handleVideoEnded.bind(this);
     }
 
     componentDidMount() {
+        this.props.toggleShowPage();
         this.props.fetchVideo(this.props.match.params.videoId);
         this.props.fetchVideos();
     }
+
+    componentWillUnmount() {
+        this.props.toggleShowPage();
+    }
     
-    handleUpdateViews() {
+    handleVideoEnded() {
         const newVideoData = {
             views: this.props.video.views + 1,
             id: this.props.video.id
         }
         this.props.patchVideoViews(newVideoData);
+
+        setTimeout(() => {
+            this.props.history.push(`/videos/${this.props.videosArray[0].id}`);
+        }, 5000);
     }
 
     render() {
@@ -42,17 +52,20 @@ class VideoShow extends React.Component {
         }
 
         return (
-            <div>
+            <div className="video-show">
                 <NavBarContainer />
 
-                <div className="video-show">
+                <SideMenuContainer />
+
+                <div className="video-show-content">
+
                     <div className="video-show-left-col">
                         <video className="video-player"
                             src={video.videoURL}
                             controls
                             height="500"
                             autoPlay
-                            onEnded={this.handleUpdateViews}
+                            onEnded={this.handleVideoEnded}
                         ></video>
 
                         <div className="video-show-details">
@@ -83,15 +96,19 @@ class VideoShow extends React.Component {
                             </div>
                         </div>
                     </div>
+
                     <div className="video-show-right-col">
                         <div className="video-show-index-up-next">Up Next</div>
 
-                        <div>
+                        <div className="video-show-index">
                             {this.props.videosArray.map(video => (
-                                <VideoShowIndexItem video={video} key={video.id} />
+                                <Link to={`/videos/${video.id}`} key={video.id} className="video-show-index-link">
+                                    <VideoShowIndexItem video={video} key={video.id} />
+                                </Link>
                             ))}
                         </div>
                     </div>
+                    
                 </div>
             </div>
         )

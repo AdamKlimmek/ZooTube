@@ -1,8 +1,9 @@
 import React from 'react';
+import Dropzone from 'react-dropzone';
 import { withRouter } from 'react-router';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVideo, faCheck, faCamera, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faVideo, faCheck, faCamera, faSpinner, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 class VideoForm extends React.Component {
     constructor(props) {
@@ -31,8 +32,8 @@ class VideoForm extends React.Component {
         });
     }
 
-    handleVideoFile(e) {
-        const file = e.currentTarget.files[0];
+    handleVideoFile(acceptedFiles) {
+        const file = acceptedFiles[0];
         const reader = new FileReader();
 
         reader.onloadend = () => {
@@ -42,8 +43,8 @@ class VideoForm extends React.Component {
         reader.readAsDataURL(file);
     }
 
-    handleThumbnailFile(e) {
-        const file = e.currentTarget.files[0];
+    handleThumbnailFile(acceptedFiles) {
+        const file = acceptedFiles[0];
         const reader = new FileReader();
 
         reader.onloadend = () => {
@@ -55,6 +56,10 @@ class VideoForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
+        // if (!this.state.thumbnailFile) {
+        //     const file = new File([""], 'app/assets/images/default_thumbnail.png');
+        // }
         
         const formData = new FormData();
         formData.append('video[title]', this.state.title);
@@ -89,19 +94,22 @@ class VideoForm extends React.Component {
 
         let videoAttachmentState;
         if (this.state.videoFile) {
-            videoAttachmentState = <FontAwesomeIcon icon={faCheck} className="check-mark"/>
+            videoAttachmentState = <FontAwesomeIcon icon={faCheck} className="video-attached"/>
         } else {
-            videoAttachmentState = <FontAwesomeIcon icon={faVideo} className="video-attachment-state"/>
+            videoAttachmentState = <FontAwesomeIcon icon={faVideo} className="video-not-attached"/>
         }
 
         let thumbnailAttachmentState;
         if (this.state.thumbnail) {
-            thumbnailAttachmentState = <div className="attached-image">
+            thumbnailAttachmentState = <div className="thumbnail-attached">
                 <img src={this.state.thumbnail} />
             </div>
         } else {
-            thumbnailAttachmentState = <FontAwesomeIcon icon={faCamera} className="thumbnail-attachment-state"/>
+            thumbnailAttachmentState = <FontAwesomeIcon icon={faCamera} className="thumbnail-not-attached"/>
         }
+
+        const videoAttachingState = <FontAwesomeIcon icon={faFolderOpen} className="video-not-attached" />;
+        const thumbnailAttachingState = <FontAwesomeIcon icon={faFolderOpen} className="thumbnail-not-attached-small" />;
 
         let deleteButton;
         if (this.props.formType === "Upload") {
@@ -120,21 +128,25 @@ class VideoForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="video-form-upper-body">
                         <label htmlFor="video-form-video-input" className={setVisibility}>
-                            {videoAttachmentState}
-                            <input type="file"
-                                id="video-form-video-input"
-                                accept="video/*"
-                                onChange={this.handleVideoFile}
-                            />
+                            <Dropzone onDrop={this.handleVideoFile} accept="video/*">
+                                {({ getRootProps, getInputProps, isDragActive }) => (
+                                    <div {...getRootProps({ className: "dropzone" })}>
+                                        <input type="file" id="video-form-video-input" accept="video/*" />
+                                        <span>{isDragActive ? videoAttachingState : videoAttachmentState}</span>
+                                    </div>
+                                )}
+                            </Dropzone>
                         </label>
 
                         <label htmlFor="video-form-thumbnail-input">
-                            {thumbnailAttachmentState}
-                            <input type="file"
-                                id="video-form-thumbnail-input"
-                                accept="image/*"
-                                onChange={this.handleThumbnailFile}
-                            />
+                            <Dropzone onDrop={this.handleThumbnailFile} accept="image/*">
+                                {({ getRootProps, getInputProps, isDragActive }) => (
+                                    <div {...getRootProps({ className: "dropzone" })}>
+                                        <input type="file" id="video-form-thumbnail-input" accept="image/*" />
+                                        <span>{isDragActive ? thumbnailAttachingState : thumbnailAttachmentState}</span>
+                                    </div>
+                                )}
+                            </Dropzone>
                         </label>
                     </div>
 
