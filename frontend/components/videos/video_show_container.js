@@ -13,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     let currentUserLike = state.entities.likes;
     let videosArray = Object.values(state.entities.videos);
     let filterCriterion = parseInt(ownProps.match.params.videoId);
+    // let shuffledVideos = shuffleVideos(filterVideos(videosArray, filterCriterion));
 
     return ({
         video: video,

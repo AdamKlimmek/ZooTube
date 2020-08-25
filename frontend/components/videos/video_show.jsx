@@ -94,7 +94,7 @@ class VideoShow extends React.Component {
     }
 
     render() {
-        const { video, currentUser, currentUserLike } = this.props;
+        const { video, currentUser, currentUserLike, videosArray } = this.props;
 
         if (!video) return null;
 
@@ -117,6 +117,13 @@ class VideoShow extends React.Component {
             editButton = <div></div>
         }
 
+        const videoShowIndex = 
+            <div className="video-show-index">
+                {videosArray.map(video => (
+                    <VideoShowIndexItem video={video} key={video.id} />
+                ))}
+            </div>
+        
         return (
             <div className="video-show">
                 <NavBarContainer />
@@ -124,14 +131,13 @@ class VideoShow extends React.Component {
                 <SideMenuContainer />
 
                 <div className="video-show-content">
-
                     <div className="video-show-left-col">
                         <video className="video-player"
                             src={video.videoURL}
                             controls
                             height="500"
                             width="900"
-                            autoPlay
+                            // autoPlay
                             onEnded={this.handleVideoEnded}
                         ></video>
 
@@ -177,13 +183,7 @@ class VideoShow extends React.Component {
                     <div className="video-show-right-col">
                         <div className="video-show-index-up-next">Up Next</div>
 
-                        <div className="video-show-index">
-                            {this.props.videosArray.map(video => (
-                                <Link to={`/videos/${video.id}`} key={video.id} className="video-show-index-link">
-                                    <VideoShowIndexItem video={video} key={video.id} />
-                                </Link>
-                            ))}
-                        </div>
+                        {videoShowIndex}
                     </div>
                     
                 </div>

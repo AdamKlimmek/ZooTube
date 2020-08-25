@@ -23,9 +23,7 @@ class VideoIndexItem extends React.Component {
                     <img src={video.thumbnail} />
                 </div>
 
-
                 <div className="video-index-item-body">
-
                     <div className="video-index-item-uploader-icon">{video.uploader[0].toUpperCase()}</div>
 
                     <div className="video-index-item-info">
@@ -39,8 +37,9 @@ class VideoIndexItem extends React.Component {
                             <span className="video-index-item-creation-date">{video.creationDate}</span>
                         </div>
                     </div>
-
+                    
                 </div>
+
             </div>
         )
     }

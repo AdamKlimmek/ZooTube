@@ -1,6 +1,4 @@
 class Like < ApplicationRecord
-    # validates :user_id, :video_id, :liked, presence: true
-
     validates :liked, inclusion: { in: [true, false] }
     validates :user_id, :video_id, presence: true
     validates :video_id, uniqueness: { scope: :user_id }

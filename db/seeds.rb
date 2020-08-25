@@ -41,6 +41,12 @@ ActiveRecord::Base.transaction do
     password: 'password'
   )
 
+  u7 = User.create!(
+    username: 'Vladimirovich',
+    email: 'lepidopterist@yahoo.com',
+    password: 'password'
+  )
+
 
 
   v1 = Video.create!(

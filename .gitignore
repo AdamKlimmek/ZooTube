@@ -7,4 +7,3 @@ npm-debug.log
 /public/assets
 /tmp/*
 /config/master.key
-/log/*

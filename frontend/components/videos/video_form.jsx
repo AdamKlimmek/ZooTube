@@ -58,8 +58,20 @@ class VideoForm extends React.Component {
         e.preventDefault();
 
         // if (!this.state.thumbnailFile) {
-        //     const file = new File([""], 'app/assets/images/default_thumbnail.png');
+        //     const fs = require('fs');
+
+        //     const myfile = 'https://zootube-pro.s3-us-west-1.amazonaws.com/default_thumbnail.jpeg';
+        //     const file = fs.readFileSync(myfile,'utf8');
+
         // }
+
+        // const reader = new FileReader();
+
+        // reader.onloadend = () => {
+        //     this.setState({ thumbnailFile: file, thumbnail: reader.result });
+        // };
+
+        // reader.readAsDataURL(file);
         
         const formData = new FormData();
         formData.append('video[title]', this.state.title);
