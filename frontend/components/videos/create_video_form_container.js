@@ -12,7 +12,6 @@ const mapStateToProps = (state) => ({
     },
     formType: "Upload",
     errors: state.errors.videoErrors
-
 });
 
 const mapDispatchToProps = (dispatch) => ({

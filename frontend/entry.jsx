@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 
 import configureStore from './store/store';
 import Root from './components/root';
+
 // import { signup, signin, signout } from "./actions/session_actions";
+// import { postLike, patchLike, deleteLike } from './actions/likes_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -24,8 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.signup = signup;
     // window.signin = signin;
     // window.signout = signout;
+    // window.postLike = postLike;
+    // window.patchLike = patchLike;
+    // window.deleteLike = deleteLike;
     window.getState = store.getState;
-    // window.dispatch = store.dispatch;
+    window.dispatch = store.dispatch;
     // testing
 
     const root = document.getElementById('root');

@@ -35,7 +35,8 @@
     border: 1px solid rgb(80, 80, 255);
     font-size: 13.5px;
     border-radius: 5px;
-    margin-top: 2px;
+    position: relative;
+    bottom: 2px;
     padding: 4px 25px;
     color: white;
     background-color: rgb(80, 80, 255);
@@ -49,6 +50,9 @@
 }
 
 .video-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     font-size: 15px;
     color: rgb(100, 100, 100);
     padding: 7px 0 22px 0;
@@ -63,6 +67,37 @@
 .video-creation-date {
     font-size: 14px;
     color: rgb(100, 100, 100);
+}
+
+.video-likes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.video-likes > * {
+    padding: 0 4px;
+    position: relative;
+    top: 7px;
+}
+
+.video-likes svg {
+    font-size: 18px;
+}
+
+.video-thumbs-up {
+    position: relative;
+    bottom: 1px;
+}
+
+.video-thumbs-down {
+    position: relative;
+    padding-left: 6px;
+    top: 1.5px;
+}
+
+.active {
+    color: rgb(80, 80, 255);
 }
 
 .video-show-details-bottom {

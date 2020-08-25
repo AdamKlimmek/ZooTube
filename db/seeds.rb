@@ -45,16 +45,30 @@ ActiveRecord::Base.transaction do
 
   v1 = Video.create!(
     title: 'Piano Cat',
-    description: 'Just a cat that likes to jam.',
+    description: 'Just a cat that likes to jam!',
     uploader_id: u6.id,
     views: 785
   )
 
   v2 = Video.create!(
     title: 'Psycho Chihuahua',
-    description: 'Beware of dog.',
+    description: 'Currently in need of a dogsitter.',
     uploader_id: u5.id,
     views: 432
+  )
+
+  v3 = Video.create!(
+    title: 'Dust Bathing',
+    description: "Chinchillas take dust baths as a way of self-cleaning their coats. It also protects them by eliminating extra oils and moisture. They will flop, flip, and roll around in the dust to cover their coat and remove any unwanted dirt or oils.",
+    uploader_id: u1.id,
+    views: 819
+  )
+
+  v4 = Video.create!(
+    title: "Don't Touch Me!",
+    description: "This Congo grey parrot asks that you respect his personal space.",
+    uploader_id: u2.id,
+    views: 271
   )
 
   Video.all.each_with_index do |video, idx|

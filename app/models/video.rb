@@ -12,6 +12,11 @@ class Video < ApplicationRecord
         foreign_key: :uploader_id,
         class_name: :User
     
+    has_many :likes,
+        primary_key: :id,
+        foreign_key: :video_id,
+        class_name: :Like
+    
     # def ensure_video
     #     unless self.video.attached?
     #         errors[:video] << "must be attached"
@@ -23,4 +28,13 @@ class Video < ApplicationRecord
     #         errors[:thumbnail] << "must be attached"
     #     end
     # end
+
+    def likes_count
+        self.likes.count { |like| like.liked }
+    end
+
+    def dislikes_count
+        self.likes.count { |like| !like.liked }
+    end
+    
 end

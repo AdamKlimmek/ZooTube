@@ -104,7 +104,10 @@ class SessionForm extends React.Component {
                                 </li>
                             ))}
                         </ul>
+
+                        <input type='submit' className='session-form-submit' />
                     </div>
+                </form>
                     
                     <div className="session-form-footer">
                         <div className="session-form-links-and-buttons">
@@ -115,7 +118,7 @@ class SessionForm extends React.Component {
                             <button className="session-form-button">Next</button>
                         </div>
                     </div>
-                </form>
+                
             </div>
         );
     }

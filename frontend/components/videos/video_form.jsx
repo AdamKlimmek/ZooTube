@@ -101,9 +101,7 @@ class VideoForm extends React.Component {
 
         let thumbnailAttachmentState;
         if (this.state.thumbnail) {
-            thumbnailAttachmentState = <div className="thumbnail-attached">
-                <img src={this.state.thumbnail} />
-            </div>
+            thumbnailAttachmentState = <div className="thumbnail-attached"><img src={this.state.thumbnail} /></div>
         } else {
             thumbnailAttachmentState = <FontAwesomeIcon icon={faCamera} className="thumbnail-not-attached"/>
         }

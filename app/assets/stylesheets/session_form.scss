@@ -83,7 +83,7 @@
 }
 
 .session-form-footer {
-    margin: 35px;
+    margin: 0 35px;
 }
 
 .session-form-links-and-buttons {
@@ -113,4 +113,8 @@
 .session-form-button:hover {
     box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
     background-color: rgb(95, 95, 255);
+}
+
+.session-form-submit {
+    display: none
 }
