@@ -1,7 +1,7 @@
 import { RECEIVE_LIKE, REMOVE_LIKE } from '../../actions/likes_actions';
 import { RECEIVE_VIDEO } from '../../actions/videos_actions';
 
-const likesReducer = (oldState = {}, action) => {
+const likeReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
 
     switch (action.type) {
@@ -20,4 +20,4 @@ const likesReducer = (oldState = {}, action) => {
     }
 };
 
-export default likesReducer;
+export default likeReducer;

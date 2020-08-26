@@ -1,4 +1,5 @@
 import { RECEIVE_ALL_VIDEOS, RECEIVE_VIDEO, REMOVE_VIDEO } from '../../actions/videos_actions';
+import { REMOVE_COMMENT } from '../../actions/comments_actions';
 
 const videosReducer = (oldState = {}, action) => {
     Object.freeze(oldState);

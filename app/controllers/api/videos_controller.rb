@@ -15,9 +15,6 @@ class Api::VideosController < ApplicationController
         if params[:video][:video] == 'null'
             render json: ['No video attached'], status: 422
             return nil
-        elsif params[:video][:thumbnail] == 'null'
-            render json: ['No thumbnail attached'], status: 422
-            return nil
         end
         
         @video = Video.new(video_params)
@@ -78,4 +75,5 @@ class Api::VideosController < ApplicationController
     def video_params_update_views
         params.require(:video).permit(:views)
     end
+    
 end

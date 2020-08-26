@@ -1,9 +1,6 @@
 class Video < ApplicationRecord
     validates :title, :uploader_id, :views, presence: true
 
-    # validate :ensure_video
-    # validate :ensure_thumbnail
-
     has_one_attached :video
     has_one_attached :thumbnail
     
@@ -17,17 +14,10 @@ class Video < ApplicationRecord
         foreign_key: :video_id,
         class_name: :Like
     
-    # def ensure_video
-    #     unless self.video.attached?
-    #         errors[:video] << "must be attached"
-    #     end
-    # end
-
-    # def ensure_thumbnail
-    #     unless self.thumbnail.attached?
-    #         errors[:thumbnail] << "must be attached"
-    #     end
-    # end
+    has_many :comments,
+        primary_key: :id,
+        foreign_key: :video_id,
+        class_name: :Comment
 
     def likes_count
         self.likes.count { |like| like.liked }

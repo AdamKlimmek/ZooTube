@@ -5,3 +5,11 @@ if current_user
     
     json.currentUserLike current_user_like
 end
+
+json.comments do
+    @video.comments.each do |comment|
+        json.set! comment.id do
+            json.partial! "api/comments/comment", comment: comment
+        end
+    end
+end

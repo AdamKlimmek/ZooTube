@@ -4,6 +4,7 @@ ActiveRecord::Base.transaction do
   
   User.delete_all
   Video.delete_all
+  Comment.delete_all
 
   u1 = User.create!(
     username: 'AdamK',

@@ -17,6 +17,10 @@ class VideoIndexItem extends React.Component {
 
         if (!video) return null;
 
+        if (video.thumbnail === "") {
+            video.thumbnail = window.defaultThumbnailURL;
+        }
+
         return (
             <div className="video-index-item" key={video.id}>
                 <div className="video-index-item-thumbnail">

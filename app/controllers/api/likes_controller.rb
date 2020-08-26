@@ -1,7 +1,7 @@
 class Api::LikesController < ApplicationController
     skip_before_action :verify_authenticity_token
 
-    def create
+    def create 
         @like = Like.new(like_params)
         @like.user_id = current_user.id
 

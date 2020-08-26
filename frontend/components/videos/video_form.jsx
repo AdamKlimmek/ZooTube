@@ -16,8 +16,10 @@ class VideoForm extends React.Component {
             videoFile: null,
         }
 
-        this.handleVideoFile = this.handleVideoFile.bind(this);
-        this.handleThumbnailFile = this.handleThumbnailFile.bind(this);
+        this.handleVideoDropSubmit = this.handleVideoDropSubmit.bind(this);
+        this.handleVideoClickSubmit = this.handleVideoClickSubmit.bind(this);
+        this.handleThumbnailDropSubmit = this.handleThumbnailDropSubmit.bind(this);
+        this.handleThumbnailClickSubmit = this.handleThumbnailClickSubmit.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
     }
@@ -32,18 +34,15 @@ class VideoForm extends React.Component {
         });
     }
 
-    handleVideoFile(acceptedFiles) {
-        const file = acceptedFiles[0];
-        const reader = new FileReader();
-
-        reader.onloadend = () => {
-            this.setState({ videoFile: file });
-        };
-
-        reader.readAsDataURL(file);
+    handleVideoDropSubmit(acceptedFiles) {
+        this.setState({ videoFile: acceptedFiles[0] });
     }
 
-    handleThumbnailFile(acceptedFiles) {
+    handleVideoClickSubmit(e) {
+        this.setState({ videoFile: e.currentTarget.files[0] });
+    }
+
+    handleThumbnailDropSubmit(acceptedFiles) {
         const file = acceptedFiles[0];
         const reader = new FileReader();
 
@@ -54,30 +53,28 @@ class VideoForm extends React.Component {
         reader.readAsDataURL(file);
     }
 
+    handleThumbnailClickSubmit(e) {
+        const file = e.currentTarget.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            this.setState({ thumbnailFile: file, thumbnail: reader.result  });
+        };
+
+        reader.readAsDataURL(file);
+    }
+
     handleSubmit(e) {
         e.preventDefault();
 
-        // if (!this.state.thumbnailFile) {
-        //     const fs = require('fs');
-
-        //     const myfile = 'https://zootube-pro.s3-us-west-1.amazonaws.com/default_thumbnail.jpeg';
-        //     const file = fs.readFileSync(myfile,'utf8');
-
-        // }
-
-        // const reader = new FileReader();
-
-        // reader.onloadend = () => {
-        //     this.setState({ thumbnailFile: file, thumbnail: reader.result });
-        // };
-
-        // reader.readAsDataURL(file);
-        
         const formData = new FormData();
         formData.append('video[title]', this.state.title);
         formData.append('video[description]', this.state.description);
         formData.append('video[video]', this.state.videoFile);
-        formData.append('video[thumbnail]', this.state.thumbnailFile);
+
+        if (this.state.thumbnail) {
+            formData.append('video[thumbnail]', this.state.thumbnailFile);
+        }
 
         if (this.props.formType === "Upload") {
             this.props.processForm(formData).then(
@@ -138,10 +135,10 @@ class VideoForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="video-form-upper-body">
                         <label htmlFor="video-form-video-input" className={setVisibility}>
-                            <Dropzone onDrop={this.handleVideoFile} accept="video/*">
+                            <Dropzone onDrop={this.handleVideoDropSubmit} accept="video/*">
                                 {({ getRootProps, getInputProps, isDragActive }) => (
                                     <div {...getRootProps({ className: "dropzone" })}>
-                                        <input type="file" id="video-form-video-input" accept="video/*" />
+                                        <input type="file" id="video-form-video-input" accept="video/*" onChange={this.handleVideoClickSubmit}/>
                                         <span>{isDragActive ? videoAttachingState : videoAttachmentState}</span>
                                     </div>
                                 )}
@@ -149,10 +146,10 @@ class VideoForm extends React.Component {
                         </label>
 
                         <label htmlFor="video-form-thumbnail-input">
-                            <Dropzone onDrop={this.handleThumbnailFile} accept="image/*">
+                            <Dropzone onDrop={this.handleThumbnailDropSubmit} accept="image/*">
                                 {({ getRootProps, getInputProps, isDragActive }) => (
                                     <div {...getRootProps({ className: "dropzone" })}>
-                                        <input type="file" id="video-form-thumbnail-input" accept="image/*" />
+                                        <input type="file" id="video-form-thumbnail-input" accept="image/*" onChange={this.handleThumbnailClickSubmit} />
                                         <span>{isDragActive ? thumbnailAttachingState : thumbnailAttachmentState}</span>
                                     </div>
                                 )}

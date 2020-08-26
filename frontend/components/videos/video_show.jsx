@@ -7,10 +7,14 @@ import { faCircle, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-
 import NavBarContainer from '../navbar/navbar_container';
 import SideMenuContainer from '../sidemenu/side_menu_container'
 import VideoShowIndexItem from './video_show_index_item';
+import CommentIndexContainer from '../comments/comment_index_container';
 
 class VideoShow extends React.Component {
     constructor(props) {
         super(props);
+        // this.state = {
+        //     autoPlay: true
+        // }
 
         this.handleLike = this.handleLike.bind(this);
         this.handleDislike = this.handleDislike.bind(this);
@@ -21,11 +25,13 @@ class VideoShow extends React.Component {
         this.props.toggleShowPage();
         this.props.fetchVideo(this.props.match.params.videoId);
         this.props.fetchVideos();
+        window.scrollTo(0, 0);
     }
 
     componentDidUpdate(oldProps) {
         if (oldProps.video && oldProps.video.id != this.props.match.params.videoId) {
             this.props.fetchVideo(this.props.match.params.videoId);
+            window.scrollTo(0, 0);
         }
     }
 
@@ -98,6 +104,20 @@ class VideoShow extends React.Component {
 
         if (!video) return null;
 
+        // const vid = document.getElementsByClassName("video-player")[0];
+        // vid.autoplay = true;
+
+
+
+        let editButton;
+        if (currentUser && currentUser.id === video.uploader_id) {
+            editButton = <Link to={`/videos/${video.id}/edit`}>
+                <button className="video-edit-button">Edit</button>
+            </Link>
+        } else {
+            editButton = <div></div>
+        }
+
         let thumbsUpActivity = "";
         let thumbsDownActivity = "";
         if (currentUserLike.liked !== undefined) {
@@ -108,15 +128,6 @@ class VideoShow extends React.Component {
             }
         }
        
-        let editButton;
-        if (currentUser && currentUser.id === video.uploader_id) {
-            editButton = <Link to={`/videos/${video.id}/edit`}>
-                            <button className="video-edit-button">Edit</button>
-                        </Link>
-        } else {
-            editButton = <div></div>
-        }
-
         const videoShowIndex = 
             <div className="video-show-index">
                 {videosArray.map(video => (
@@ -177,6 +188,8 @@ class VideoShow extends React.Component {
                                 
                                 <div className="video-description">{video.description}</div>
                             </div>
+
+                            <CommentIndexContainer video={video} />
                         </div>
                     </div>
 

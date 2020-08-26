@@ -10,7 +10,7 @@ import VideoShow from './video_show';
 const mapStateToProps = (state, ownProps) => {
     let video = state.entities.videos[ownProps.match.params.videoId];
     let currentUser = state.entities.users[state.session.currentUser];
-    let currentUserLike = state.entities.likes;
+    let currentUserLike = state.entities.like;
     let videosArray = Object.values(state.entities.videos);
     let filterCriterion = parseInt(ownProps.match.params.videoId);
     // let shuffledVideos = shuffleVideos(filterVideos(videosArray, filterCriterion));

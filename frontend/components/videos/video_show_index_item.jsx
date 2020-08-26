@@ -6,6 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 const VideoShowIndexItem = ({ video }) => {
+    if (video.thumbnail === "") {
+        video.thumbnail = window.defaultThumbnailURL;
+    }
+    
     return (
         <Link to={`/videos/${video.id}`} key={video.id} className="video-show-index-link">
             <div className="video-show-index-item">
