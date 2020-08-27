@@ -70,8 +70,6 @@ class SideMenu extends React.Component {
     
                     {modalScreen}
                 </div>
-    
-                <div className={`${size}-spacer`}></div>
             </div>
         )
     }

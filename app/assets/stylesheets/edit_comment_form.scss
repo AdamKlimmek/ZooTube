@@ -1,0 +1,95 @@
+.edit-comment-form {
+    margin: auto;
+    margin-top: 100px;
+    width: 650px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    border-radius: 7px;
+    box-shadow: 8px 2px 18px -4px rgba(0, 0, 0, 0.2), -8px 2px 18px -4px rgba(0, 0, 0, 0.2);
+}
+
+.edit-comment-form-header {
+    margin: 35px 35px 0px 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-comment-form-header span {
+    font-size: 28px;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.edit-comment-form-header button {
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(130, 130, 130);
+    padding-right: 3px;
+    position: relative;
+    bottom: 3px;
+}
+
+.edit-comment-form-header button:hover {
+    color: rgb(75, 75, 75);
+}
+
+.edit-comment-form-body {
+    margin: 30px 35px 0px 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-comment-form-body-input {
+    height: 250px;
+    width: 100%;
+    padding: 10px 0 0 0;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    text-indent: 12px;
+    font-size: 14px;
+    resize: none;
+    margin-bottom: 0px;
+}
+
+.edit-comment-form-errors-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-comment-form-error {
+    color: red;
+    font-size: 13px;
+    align-items: center;
+    margin: auto;
+}
+
+.edit-comment-form-error:first-child {
+    margin-top: 10px;
+}
+
+.edit-comment-form-footer {
+    margin: 35px 35px 35px 35px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.edit-comment-form-submit-button {
+    border: 1px solid rgb(80, 80, 255);
+    border-radius: 5px;
+    padding: 10px 25px;
+    color: white;
+    background-color: rgb(80, 80, 255);
+    transition-property: box-shadow;
+    transition-duration: 0.3s;
+}
+
+.edit-comment-form-submit-button:hover {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    background-color: rgb(95, 95, 255);
+}

@@ -1,7 +1,8 @@
-export const fetchVideos = () => (
+export const fetchVideos = (query) => (
     $.ajax({
         method: 'GET',
         url: `/api/videos`,
+        data: { query },
     })
 );
 
@@ -18,7 +19,7 @@ export const postVideo = (formData) => (
         url: `/api/videos`,
         data: formData,
         contentType: false,
-        processData: false
+        processData: false,
     })
 );
 
@@ -28,7 +29,7 @@ export const patchVideo = (formData, video) => (
         url: `/api/videos/${video.id}`,
         data: formData,
         contentType: false,
-        processData: false
+        processData: false,
     })
 );
 

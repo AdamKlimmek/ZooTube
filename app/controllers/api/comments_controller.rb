@@ -1,6 +1,13 @@
 class Api::CommentsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
+    before_action :require_logged_in, only: [:show, :create, :update, :destroy]
+
+    def show
+        @comment = Comment.find(params[:id])
+        render :show
+    end
+
     def create
         @comment = Comment.new(comment_params)
         @comment.user_id = current_user.id

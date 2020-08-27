@@ -1,3 +1,10 @@
+export const fetchComment = (commentId) => (
+    $.ajax({
+        method: 'GET',
+        url: `/api/comments/${commentId}`,
+    })
+);
+
 export const postComment = (comment) => (
     $.ajax({
         method: 'POST',
@@ -6,11 +13,13 @@ export const postComment = (comment) => (
     })
 );
 
-export const patchComment = (comment) => (
+export const patchComment = (formData, comment) => (
     $.ajax({
         method: 'PATCH',
         url: `/api/comments/${comment.id}`,
-        data: { comment },
+        data: formData,
+        contentType: false,
+        processData: false,
     })
 );
 

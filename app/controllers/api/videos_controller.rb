@@ -1,8 +1,11 @@
 class Api::VideosController < ApplicationController
     skip_before_action :verify_authenticity_token
 
-    def index
-        @videos = Video.all
+    before_action :require_logged_in, only: [:create, :update, :destroy]
+
+    def index(query = "")
+        query = params['query'] || ""
+        @videos = Video.where("lower(videos.title) like '%#{query.downcase}%'")
         render :index
     end
 

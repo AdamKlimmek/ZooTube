@@ -1,7 +1,9 @@
 import React from 'react';
+import { Route, Switch, Redirect, HashRouter } from 'react-router-dom';
 
 import NavBarContainer from './navbar/navbar_container';
 import SideMenuContainer from './sidemenu/side_menu_container';
+import SearchVideoIndexContainer from './search/search_video_index_container';
 import VideoIndexContainer from './videos/video_index_container';
 
 const MainComponent = () => {
@@ -11,7 +13,11 @@ const MainComponent = () => {
             <div className="main-content">
                 <SideMenuContainer />
 
-                <VideoIndexContainer />
+                <Switch>
+                    <Route exact path='/search/:query' component={SearchVideoIndexContainer} />
+                    <Route exact path='/' component={VideoIndexContainer} />
+                    <Redirect to='/' />
+                </Switch>
             </div>
         </div>
     );

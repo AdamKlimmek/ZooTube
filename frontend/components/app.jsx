@@ -7,6 +7,7 @@ import SignupFormContainer from './session/signup_form_container';
 import VideoShowContainer from './videos/video_show_container';
 import CreateVideoFormContainer from './videos/create_video_form_container';
 import EditVideoFormContainer from './videos/edit_video_form_container';
+import EditCommentFormContainer from './comments/edit_comment_form_container';
 import MainComponent from './main_component';
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
             <AuthRoute path="/signup" component={SignupFormContainer} />
             <ProtectedRoute path="/videos/new" component={CreateVideoFormContainer} />
             <ProtectedRoute path="/videos/:videoId/edit" component={EditVideoFormContainer} />
+            <ProtectedRoute path="/comments/:commentId/edit" component={EditCommentFormContainer} />
             <Route exact path="/videos/:videoId" component={VideoShowContainer} />
             <Route path='/' component={MainComponent} />
             <Redirect to='/' />

@@ -7,10 +7,6 @@
     padding: 18px 0;
 }
 
-.comment-form {
-    // min-height: 60px;
-}
-
 .not-clickable {
     pointer-events: none;
     -webkit-user-select: none; /* Safari */        
@@ -30,7 +26,6 @@
     color: white;
     text-align: center;
     vertical-align: middle;
-    line-height: 36px;
     font-size: 18px;
     height: 34px;
     width: 34px;
@@ -154,25 +149,57 @@
     white-space: pre-wrap
 }
 
-.comment-buttons button {
-    border: 1px solid rgb(80, 80, 255);
-    font-size: 13.5px;
-    border-radius: 5px;
-    position: relative;
-    bottom: 2px;
-    padding: 4.5px 18.5px;
-    color: white;
-    background-color: rgb(80, 80, 255);
-    transition-property: box-shadow;
-    transition-duration: 0.3s;
+.comment-dropdown {
+    display: flex;
+    align-items: center;
 }
 
-.comment-buttons button:hover {
-    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-    background-color: rgb(95, 95, 255);
+.vertical-ellipsis {
+    font-size: 16px;
+    color: rgb(150, 150, 150);
+    position: relative;
+    margin: 5px;
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
-.comment-delete-button {
-    position: relative;
-    top: 2px;
+.comment-dropdown-menu {
+    position: absolute;
+    border: 1px solid lightgray;
+    width: 110px;
+    height: 82px;
+    left: 805px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 2px 8px -4px rgba(0, 0, 0, 0.2), -4px 2px 8px -4px rgba(0, 0, 0, 0.2);
+}
+
+.comment-dropdown-button:first-child {
+    margin-top: 5px;
+}
+
+.comment-dropdown-button {
+    color: rgb(150, 150, 150);
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+.comment-dropdown-button:hover {
+    background: rgb(220, 220, 220);
+}
+
+.comment-dropdown-button svg {
+    padding: 15px;
+}
+
+.icon-trash {
+    margin-right: 3px;
+}
+
+.comment-dropdown-button span, .comment-dropdown-button button {
+    color: rgb(45, 45, 45);
 }

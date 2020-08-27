@@ -30,7 +30,7 @@ class Dropdown extends React.Component {
     }
     
     render() {
-        const user = this.props.user;
+        const currentUser = this.props.currentUser;
     
         let setVisibility;
         if (this.props.isVisible) {
@@ -42,11 +42,11 @@ class Dropdown extends React.Component {
         return (
             <div className={`user-dropdown ${setVisibility}`}>
                 <div className="user-dropdown-header">
-                    <div className="user-dropdown-icon user-icon">{user.username[0].toUpperCase()}</div>
+                    <div className="user-dropdown-icon user-icon">{currentUser.username[0].toUpperCase()}</div>
                     
                     <div className="user-dropdown-info">
-                        <div className="user-dropdown-username">{user.username}</div>
-                        <div className="user-dropdown-email">{user.email}</div>
+                        <div className="user-dropdown-username">{currentUser.username}</div>
+                        <div className="user-dropdown-email">{currentUser.email}</div>
                     </div>
                 </div>
 

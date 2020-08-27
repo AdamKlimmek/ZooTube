@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faSpinner, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import NavBarContainer from '../navbar/navbar_container';
 import SideMenuContainer from '../sidemenu/side_menu_container'
 import VideoShowIndexItem from './video_show_index_item';
@@ -13,7 +13,7 @@ class VideoShow extends React.Component {
     constructor(props) {
         super(props);
         // this.state = {
-        //     autoPlay: true
+        //     readyForNextVideo: false
         // }
 
         this.handleLike = this.handleLike.bind(this);
@@ -88,15 +88,16 @@ class VideoShow extends React.Component {
     }
     
     handleVideoEnded() {
-        const newVideoData = {
+        this.props.patchVideoViews({
             views: this.props.video.views + 1,
             id: this.props.video.id
-        }
-        this.props.patchVideoViews(newVideoData);
+        });
 
-        setTimeout(() => {
-            this.props.history.push(`/videos/${this.props.videosArray[0].id}`);
-        }, 5000);
+        // this.setState({ readyForNextVideo: true })
+
+        this.props.history.push(`/videos/${this.props.videosArray[0].id}`);
+
+        // this.setState({ readyForNextVideo: false })
     }
 
     render() {
@@ -104,10 +105,12 @@ class VideoShow extends React.Component {
 
         if (!video) return null;
 
-        // const vid = document.getElementsByClassName("video-player")[0];
-        // vid.autoplay = true;
-
-
+        // let startingNextVideo;
+        // if (this.state.readyForNextVideo) {
+        //     startingNextVideo = <FontAwesomeIcon icon={faSpinner} />
+        // } else {
+        //     startingNextVideo = null
+        // }
 
         let editButton;
         if (currentUser && currentUser.id === video.uploader_id) {
@@ -120,21 +123,29 @@ class VideoShow extends React.Component {
 
         let thumbsUpActivity = "";
         let thumbsDownActivity = "";
-        if (currentUserLike.liked !== undefined) {
-            if (currentUserLike.liked) {
-                thumbsUpActivity = "active";
-            } else {
-                thumbsDownActivity = "active";
+        if (!currentUser) {
+            thumbsUpActivity = "";
+            let thumbsDownActivity = "";
+        } else {
+            if (currentUserLike.liked !== undefined) {
+                if (currentUserLike.liked) {
+                    thumbsUpActivity = "active";
+                    thumbsDownActivity = "";
+                } else {
+                    thumbsUpActivity = "";
+                    thumbsDownActivity = "active";
+                }
             }
         }
        
-        const videoShowIndex = 
+        const videoShowIndex = () => (
             <div className="video-show-index">
                 {videosArray.map(video => (
                     <VideoShowIndexItem video={video} key={video.id} />
                 ))}
             </div>
-        
+        )
+
         return (
             <div className="video-show">
                 <NavBarContainer />
@@ -196,7 +207,7 @@ class VideoShow extends React.Component {
                     <div className="video-show-right-col">
                         <div className="video-show-index-up-next">Up Next</div>
 
-                        {videoShowIndex}
+                        {videoShowIndex()}
                     </div>
                     
                 </div>

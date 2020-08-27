@@ -24,15 +24,21 @@ export const clearErrors = () => ({
     type: CLEAR_ERRORS,
 });
 
-export const postComment = (comment) => dispatch => (
-    CommentsApiUtil.postComment(comment).then(
-        comment => dispatch(receiveComment(comment)),
+export const fetchComment = (commentId) => dispatch => (
+    CommentsApiUtil.fetchComment(commentId).then(
+        (comment) => dispatch(receiveComment(comment)),
         errors => dispatch(receiveErrors(errors))
     )
 );
 
-export const patchComment = (comment) => dispatch => (
-    CommentsApiUtil.patchComment(comment).then(
+export const postComment = (comment) => dispatch => (
+    CommentsApiUtil.postComment(comment).then(
+        comment => dispatch(receiveComment(comment))
+    )
+);
+
+export const patchComment = (formData, comment) => dispatch => (
+    CommentsApiUtil.patchComment(formData, comment).then(
         comment => dispatch(receiveComment(comment)),
         errors => dispatch(receiveErrors(errors))
     )

@@ -1,34 +1,52 @@
 import React from 'react';
+import { withRouter } from 'react-router';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+
+import CommentDropdown from './comment_dropdown.jsx';
 
 class CommentIndexItem extends React.Component {
     constructor(props) {
         super(props);
-            
-        this.handleDelete = this.handleDelete.bind(this);
-    }
-
-    handleEdit() {
-
-    }
-
-    handleDelete() {
-        this.props.deleteComment(this.props.comment.id);
-    }
-    
-    render() {
-        const { comment, currentUser } = this.props;
-
-        let editButton;
-        let deleteButton;
-        if (currentUser && currentUser.id === comment.user_id) {
-            // editButton =
-
-            deleteButton =
-                <button className="comment-delete-button" onClick={this.handleDelete}>Delete</button>
-        } else {
-            editButton = <div></div>
-            deleteButton = <div></div>
+        this.state = {
+            childVisible: false
         }
+
+        this.toggleChildVisibility = this.toggleChildVisibility.bind(this);
+    }
+
+    toggleChildVisibility() {
+        this.setState({ childVisible: !this.state.childVisible })
+    }
+
+    render() {
+        const { comment, currentUser, patchComment, deleteComment, fetchVideo } = this.props;
+      
+        let setVisibility;
+        if (this.props.currentUser && this.props.comment && this.props.currentUser.id === this.props.comment.user_id) {
+            setVisibility = ""
+        } else {
+            setVisibility = "hidden"
+        }; 
+
+        const commentDropdown = (
+            <div className={`comment-dropdown comment-dropdown-${comment.id} ${setVisibility}`}>
+                <CommentDropdown
+                    currentUser={currentUser}
+                    comment={comment}
+                    patchComment={patchComment}
+                    deleteComment={deleteComment}
+                    fetchVideo={fetchVideo}
+                    isVisible={this.state.childVisible}
+                    toggleVisibility={this.toggleChildVisibility}
+                />
+
+                <div className={`vertical-ellipsis vertical-ellipsis-${comment.id}`} onClick={this.toggleChildVisibility}>
+                    <FontAwesomeIcon icon={faEllipsisV} />
+                </div>
+            </div>
+        )
 
         return (
             <li className="comment-index-item">
@@ -43,12 +61,11 @@ class CommentIndexItem extends React.Component {
                 </div>
 
                 <div className="comment-buttons">
-                    {editButton}
-                    {deleteButton}
+                    {commentDropdown}
                 </div>
             </li>
         )
     }
 };
 
-export default CommentIndexItem;
+export default withRouter(CommentIndexItem);

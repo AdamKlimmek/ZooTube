@@ -30,15 +30,17 @@ export const clearErrors = () => ({
     type: CLEAR_ERRORS,
 });
 
-export const fetchVideos = () => dispatch => (
-    VideosApiUtil.fetchVideos().then(
-        videos => dispatch(receiveAllVideos(videos))
+export const fetchVideos = (query) => dispatch => (
+    VideosApiUtil.fetchVideos(query).then(
+        videos => dispatch(receiveAllVideos(videos)),
+        errors => dispatch(receiveErrors(errors))
     )
 );
 
 export const fetchVideo = (videoId) => dispatch => (
     VideosApiUtil.fetchVideo(videoId).then(
-        video => dispatch(receiveVideo(video))
+        video => dispatch(receiveVideo(video)),
+        errors => dispatch(receiveErrors(errors))
     )
 );
 
@@ -58,7 +60,7 @@ export const patchVideo = (formData, video) => dispatch => (
 
 export const patchVideoViews = (video) => dispatch => (
     VideosApiUtil.patchVideoViews(video).then(
-        (video) => dispatch(receiveVideo(video)),
+        video => dispatch(receiveVideo(video)),
         errors => dispatch(receiveErrors(errors))
     )
 );
