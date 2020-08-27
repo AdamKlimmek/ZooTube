@@ -25,6 +25,8 @@ class NavBar extends React.Component {
     }
 
     handleSearch(e) {
+        e.preventDefault();
+        
         if (this.state.searchField !== "") {
             this.props.history.push(`/search/${this.state.searchField}`)
         }

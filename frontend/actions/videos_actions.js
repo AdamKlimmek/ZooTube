@@ -6,9 +6,9 @@ export const REMOVE_VIDEO = 'REMOVE_VIDEO';
 export const RECEIVE_VIDEO_ERRORS = 'RECEIVE_VIDEO_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-export const receiveAllVideos = videos => ({
+export const receiveAllVideos = videos => (9{
     type: RECEIVE_ALL_VIDEOS,
-    videos
+    videos 
 });
 
 export const receiveVideo = video => ({

@@ -8,9 +8,9 @@ class VideoIndexItem extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-        this.props.fetchVideo(this.props.video.id)
-    }
+    // componentDidMount() {
+    //     this.props.fetchVideo(this.props.video.id)
+    // }
     
     render() {
         const { video } = this.props;

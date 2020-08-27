@@ -47,7 +47,7 @@ class SearchVideoIndex extends React.Component {
                     <div className="video-index-items">
                         {videos.map(video => (
                             <Link to={`/videos/${video.id}`} key={video.id}>
-                                <VideoIndexItem video={video} fetchVideo={fetchVideo} />
+                                <VideoIndexItem video={video} />
                             </Link>
                         ))}
                     </div>
