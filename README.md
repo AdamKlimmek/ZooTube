@@ -35,7 +35,7 @@ end
 
 When a search is made, whatever text is in the input field is passed into the index action as an argument. From there, Rails will fire an SQL query to select all videos whose lowercased titles include the lowercased query. This helps get around issues with differing capitalization between video titles and search requests. For example, if a user simply searched for 'penguin', or if they accidentally had their caps-lock on, their search results would still include a video with the title 'Penguin Party'. 
 
-![alt text](https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/search.png "Search Functionality")
+![alt text](https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/search_func.png "Search Functionality")
 
 By default, when no query is present, the controller's index action will behave as expected and simply serve up all videos (e.g., when navigating to the video index page).
 
