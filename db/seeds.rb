@@ -137,7 +137,7 @@ ActiveRecord::Base.transaction do
 
   v12 = Video.create!(
     title: 'Penguin Party',
-    description: "Emporer penguins in their natural habitat.",
+    description: "Emperor penguins in their natural habitat.",
     uploader_id: u1.id,
     views: 471
   )
@@ -331,6 +331,8 @@ ActiveRecord::Base.transaction do
     liked: false
   )
 
+
+
   c1 = Comment.create!(
     user_id: u3.id,
     video_id: v1.id,
@@ -344,7 +346,7 @@ ActiveRecord::Base.transaction do
   )
 
   c3 = Comment.create!(
-    user_id: u4.id,
+    user_id: u1.id,
     video_id: v2.id,
     body: "Awesome!"
   )
@@ -422,7 +424,7 @@ ActiveRecord::Base.transaction do
   )
 
   c16 = Comment.create!(
-    user_id: u5.id,
+    user_id: u1.id,
     video_id: v8.id,
     body: "{cleverComment}"
   )
