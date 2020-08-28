@@ -18,6 +18,6 @@ ZooTube is a social media website that allows users to upload and share videos w
 ## Video upload
 Once signed in, users can access a video upload form with a clear, minimalist layout and drag-and-drop functionality.
 
-![alt text](https://github.com/AdamKlimmek/ZooTube/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/video_upload.png "Video Upload Form")
 
 ## Search
