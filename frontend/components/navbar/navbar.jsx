@@ -39,7 +39,7 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const currentUser = this.props.currentUser;
+        const { currentUser, signout } = this.props;
         
         const loginLink = () => (
                 <Link to='/signin' className="user-signin">
@@ -50,10 +50,10 @@ class NavBar extends React.Component {
 
         const profileIcon = () => (
             <div className="user">
-                <div className="user-icon" onClick={this.toggleChildVisibility}>{currentUser.username[0].toUpperCase()}</div>
+                <div className={`user-icon ${currentUser.color}`} onClick={this.toggleChildVisibility}>{currentUser.username[0].toUpperCase()}</div>
                 <Dropdown
-                    currentUser={this.props.currentUser}
-                    signout={this.props.signout}
+                    currentUser={currentUser}
+                    signout={signout}
                     isVisible={this.state.childVisible}
                     toggleVisibility={this.toggleChildVisibility}
                     />

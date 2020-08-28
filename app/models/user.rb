@@ -1,10 +1,12 @@
 class User < ApplicationRecord
     attr_reader :password
 
-    validates :username, :email, :password_digest, :session_token, presence: true
+    before_validation :set_empty_color_to_random_value
+
+    validates :username, :email, :password_digest, :color, :session_token, presence: true
     validates :username, :email, uniqueness: true
     validates :password, length: { minimum: 6 }, allow_nil: true
-
+    
     after_initialize :ensure_session_token
 
     has_many :videos,
@@ -49,6 +51,12 @@ class User < ApplicationRecord
 
     private
     
+    def set_empty_color_to_random_value
+        colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink']
+
+        self.color = colors.sample if !attribute_present?("color")
+    end
+
     def ensure_session_token
         self.session_token ||= SecureRandom.urlsafe_base64
     end

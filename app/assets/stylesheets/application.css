@@ -28,3 +28,31 @@ html {
 .hidden {
     display: none;
 }
+
+.red {
+    background: rgb(255, 0, 0);
+}
+
+.orange {
+    background: rgb(255, 111, 0);
+}
+
+.yellow {
+    background: rgb(254, 212, 2);
+}
+
+.green {
+    background: rgb(10, 193, 0);
+}
+
+.blue {
+    background: rgb(10, 172, 242);
+}
+
+.purple {
+    background: rgb(149, 0, 255);
+}
+
+.pink {
+    background: rgb(255, 0, 238);
+}

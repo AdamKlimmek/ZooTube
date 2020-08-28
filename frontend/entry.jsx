@@ -6,7 +6,7 @@ import Root from './components/root';
 
 // import { signup, signin, signout } from "./actions/session_actions";
 // import { postLike, patchLike, deleteLike } from './actions/likes_actions';
-import { fetchVideos } from './actions/videos_actions';
+// import { fetchVideos } from './actions/videos_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -30,9 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.postLike = postLike;
     // window.patchLike = patchLike;
     // window.deleteLike = deleteLike;
-    window.fetchVideos = fetchVideos;
-    window.getState = store.getState;
-    window.dispatch = store.dispatch;
+    // window.fetchVideos = fetchVideos;
+    // window.getState = store.getState;
+    // window.dispatch = store.dispatch;
     // testing
 
     const root = document.getElementById('root');

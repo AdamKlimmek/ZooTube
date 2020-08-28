@@ -56,7 +56,7 @@ class CommentIndex extends React.Component {
         let clickable;
         let placeholderText;
         if (currentUser) {
-            commenterIcon = <div className="comment-user-icon">{currentUser.username[0].toUpperCase()}</div>
+            commenterIcon = <div className={`comment-user-icon ${currentUser.color}`}>{currentUser.username[0].toUpperCase()}</div>
             clickable = "clickable"
             placeholderText = "Add a public comment..."
         } else {

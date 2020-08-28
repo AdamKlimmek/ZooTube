@@ -8,10 +8,6 @@ class VideoIndexItem extends React.Component {
         super(props);
     }
 
-    // componentDidMount() {
-    //     this.props.fetchVideo(this.props.video.id)
-    // }
-    
     render() {
         const { video } = this.props;
 
@@ -28,7 +24,7 @@ class VideoIndexItem extends React.Component {
                 </div>
 
                 <div className="video-index-item-body">
-                    <div className="video-index-item-uploader-icon">{video.uploader[0].toUpperCase()}</div>
+                    <div className={`video-index-item-uploader-icon ${video.uploaderColor}`}>{video.uploader[0].toUpperCase()}</div>
 
                     <div className="video-index-item-info">
                         <span className="video-index-item-title">{video.title}</span>

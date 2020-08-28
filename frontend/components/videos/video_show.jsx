@@ -12,9 +12,6 @@ import CommentIndexContainer from '../comments/comment_index_container';
 class VideoShow extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     readyForNextVideo: false
-        // }
 
         this.handleLike = this.handleLike.bind(this);
         this.handleDislike = this.handleDislike.bind(this);
@@ -93,24 +90,13 @@ class VideoShow extends React.Component {
             id: this.props.video.id
         });
 
-        // this.setState({ readyForNextVideo: true })
-
         this.props.history.push(`/videos/${this.props.videosArray[0].id}`);
-
-        // this.setState({ readyForNextVideo: false })
     }
 
     render() {
         const { video, currentUser, currentUserLike, videosArray } = this.props;
 
         if (!video) return null;
-
-        // let startingNextVideo;
-        // if (this.state.readyForNextVideo) {
-        //     startingNextVideo = <FontAwesomeIcon icon={faSpinner} />
-        // } else {
-        //     startingNextVideo = null
-        // }
 
         let editButton;
         if (currentUser && currentUser.id === video.uploader_id) {
@@ -137,14 +123,14 @@ class VideoShow extends React.Component {
                 }
             }
         }
-       
-        const videoShowIndex = () => (
-            <div className="video-show-index">
+
+        const videoShowIndex = () => {
+            return <div className="video-show-index">
                 {videosArray.map(video => (
                     <VideoShowIndexItem video={video} key={video.id} />
                 ))}
             </div>
-        )
+        }
 
         return (
             <div className="video-show">
@@ -159,7 +145,7 @@ class VideoShow extends React.Component {
                             controls
                             height="500"
                             width="900"
-                            // autoPlay
+                            autoPlay
                             onEnded={this.handleVideoEnded}
                         ></video>
 
@@ -193,7 +179,7 @@ class VideoShow extends React.Component {
 
                             <div className="video-show-details-bottom">
                                 <div className="video-uploader-info">
-                                    <div className="video-uploader-icon">{video.uploader[0].toUpperCase()}</div>
+                                    <div className={`video-uploader-icon ${video.uploaderColor}`}>{video.uploader[0].toUpperCase()}</div>
                                     <div className="video-uploader-username">{video.uploader}</div>
                                 </div>
                                 

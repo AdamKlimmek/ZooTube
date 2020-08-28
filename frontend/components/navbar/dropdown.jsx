@@ -42,7 +42,7 @@ class Dropdown extends React.Component {
         return (
             <div className={`user-dropdown ${setVisibility}`}>
                 <div className="user-dropdown-header">
-                    <div className="user-dropdown-icon user-icon">{currentUser.username[0].toUpperCase()}</div>
+                    <div className={`user-dropdown-icon user-icon ${currentUser.color}`}>{currentUser.username[0].toUpperCase()}</div>
                     
                     <div className="user-dropdown-info">
                         <div className="user-dropdown-username">{currentUser.username}</div>

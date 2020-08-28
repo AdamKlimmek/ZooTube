@@ -51,7 +51,7 @@ class CommentIndexItem extends React.Component {
         return (
             <li className="comment-index-item">
                 <div className="comment-info">
-                    <div className="comment-user-icon">{comment.commenterUsername[0].toUpperCase()}</div>
+                    <div className={`comment-user-icon ${comment.commenterColor}`}>{comment.commenterUsername[0].toUpperCase()}</div>
 
                     <div className="comment-text">
                         <div className="commenter-username">{comment.commenterUsername}</div>

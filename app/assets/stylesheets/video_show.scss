@@ -113,12 +113,11 @@
 
 .video-uploader-icon {
     flex-shrink: 0;
-    background: #3e9401;
     border-radius: 100%;
     color: white;
     text-align: center;
     vertical-align: middle;
-    font-size: 18px;
+    font-size: 17px;
     height: 34px;
     width: 34px;
     line-height: 34.5px;
@@ -140,6 +139,7 @@
     color: rgb(30, 30, 30);
     font-size: 14px;
     max-width: 850px;
+    line-height: 1.5;
 }
 
 // video show index and index items
