@@ -12,6 +12,9 @@ import CommentIndexContainer from '../comments/comment_index_container';
 class VideoShow extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            processingLikeOrDislike: false,
+        }
 
         this.handleLike = this.handleLike.bind(this);
         this.handleDislike = this.handleDislike.bind(this);
@@ -39,48 +42,64 @@ class VideoShow extends React.Component {
     handleLike() {
         if (!this.props.currentUser) return;
 
-        if (Object.keys(this.props.currentUserLike).length === 0) {
-            this.props.postLike({
-                video_id: this.props.video.id,
-                liked: true
-            }).then(
-                () => this.props.fetchVideo(this.props.match.params.videoId));
+        if (this.state.processingLikeOrDislike) {
+            return;
         } else {
-            if (this.props.currentUserLike.liked) {
-                this.props.deleteLike(this.props.currentUserLike.id).then(
-                    () => this.props.fetchVideo(this.props.match.params.videoId));
-            } else {
-                this.props.patchLike({
-                    id: this.props.currentUserLike.id,
+            this.setState({ processingLikeOrDislike: true })
+
+            if (Object.keys(this.props.currentUserLike).length === 0) {
+                this.props.postLike({
                     video_id: this.props.video.id,
                     liked: true
-                }).then(
-                    () => this.props.fetchVideo(this.props.match.params.videoId));
+                })
+                .then(() => this.props.fetchVideo(this.props.match.params.videoId));
+            } else {
+                if (this.props.currentUserLike.liked) {
+                    this.props.deleteLike(this.props.currentUserLike.id)
+                        .then(() => this.props.fetchVideo(this.props.match.params.videoId));
+                } else {
+                    this.props.patchLike({
+                        id: this.props.currentUserLike.id,
+                        video_id: this.props.video.id,
+                        liked: true
+                    })
+                    .then(() => this.props.fetchVideo(this.props.match.params.videoId));
+                }
             }
+
+            this.setState({ processingLikeOrDislike: false })
         }
     }
 
     handleDislike() {
         if (!this.props.currentUser) return;
 
-        if (Object.keys(this.props.currentUserLike).length === 0) {
-            this.props.postLike({
-                video_id: this.props.video.id,
-                liked: false
-            }).then(
-                () => this.props.fetchVideo(this.props.match.params.videoId));
+        if (this.state.processingLikeOrDislike) {
+            return;
         } else {
-            if (!this.props.currentUserLike.liked) {
-                this.props.deleteLike(this.props.currentUserLike.id).then(
-                    () => this.props.fetchVideo(this.props.match.params.videoId));
-            } else {
-                this.props.patchLike({
-                    id: this.props.currentUserLike.id,
+            this.setState({ processingLikeOrDislike: true })
+
+            if (Object.keys(this.props.currentUserLike).length === 0) {
+                this.props.postLike({
                     video_id: this.props.video.id,
                     liked: false
-                }).then(
-                    () => this.props.fetchVideo(this.props.match.params.videoId));
+                })
+                .then(() => this.props.fetchVideo(this.props.match.params.videoId));
+            } else {
+                if (!this.props.currentUserLike.liked) {
+                    this.props.deleteLike(this.props.currentUserLike.id)
+                        .then(() => this.props.fetchVideo(this.props.match.params.videoId));
+                } else {
+                    this.props.patchLike({
+                        id: this.props.currentUserLike.id,
+                        video_id: this.props.video.id,
+                        liked: false
+                    })
+                    .then(() => this.props.fetchVideo(this.props.match.params.videoId));
+                }
             }
+
+            this.setState({ processingLikeOrDislike: false })
         }
     }
     
@@ -164,12 +183,12 @@ class VideoShow extends React.Component {
                                     </div>
                                     
                                     <div className="video-likes">
-                                        <button onClick={this.handleLike}>
+                                        <button onClick={this.handleLike} disabled={this.state.processingLikeOrDislike}>
                                             <FontAwesomeIcon icon={faThumbsUp} className={`video-thumbs-up ${thumbsUpActivity}`}/>
                                         </button>
                                         <span>{video.likesCount}</span>
 
-                                        <button onClick={this.handleDislike}>
+                                        <button onClick={this.handleDislike} disabled={this.state.processingLikeOrDislike}>
                                             <FontAwesomeIcon icon={faThumbsDown} className={`video-thumbs-down ${thumbsDownActivity}`}/>
                                         </button>
                                         <span>{video.dislikesCount}</span>
