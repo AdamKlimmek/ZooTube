@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
  
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faVideo, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin, faAngellist } from '@fortawesome/free-brands-svg-icons';
 
 class SideMenu extends React.Component {
     constructor(props) {
@@ -65,6 +65,11 @@ class SideMenu extends React.Component {
                         <a href="https://www.linkedin.com/in/adamklimmek/" className="side-menu-link" target="_blank">
                             <FontAwesomeIcon icon={faLinkedin} className="side-menu-link-icon" />
                             <span>LinkedIn</span>
+                        </a>
+
+                        <a href="https://angel.co/u/adam-klimmek" className="side-menu-link" target="_blank">
+                            <FontAwesomeIcon icon={faAngellist} className="side-menu-link-icon" />
+                            <span>AngelList</span>
                         </a>
                     </div>
     
