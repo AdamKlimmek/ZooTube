@@ -163,6 +163,8 @@ ActiveRecord::Base.transaction do
     video.thumbnail.attach(io: thumbnail_file, filename: "0#{idx+1}-thumbnails.jpeg")
   end
 
+
+  
   l1 = Like.create!(
     user_id: u1.id,
     video_id: v1.id,

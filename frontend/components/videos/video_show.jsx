@@ -13,7 +13,9 @@ class VideoShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            processingLikeOrDislike: false,
+            updatingLikeStatus: false,
+            likesCount: 0,
+            dislikesCount: 0,
         }
 
         this.handleLike = this.handleLike.bind(this);
@@ -23,14 +25,14 @@ class VideoShow extends React.Component {
 
     componentDidMount() {
         this.props.toggleShowPage();
-        this.props.fetchVideo(this.props.match.params.videoId);
+        this.props.fetchVideo(this.props.match.params.videoId).then(() => this.setLikes());
         this.props.fetchVideos();
         window.scrollTo(0, 0);
     }
 
     componentDidUpdate(oldProps) {
         if (oldProps.video && oldProps.video.id != this.props.match.params.videoId) {
-            this.props.fetchVideo(this.props.match.params.videoId);
+            this.props.fetchVideo(this.props.match.params.videoId).then(() => this.setLikes());
             window.scrollTo(0, 0);
         }
     }
@@ -39,68 +41,66 @@ class VideoShow extends React.Component {
         this.props.toggleShowPage();
     }
 
+    setLikes() {
+        this.setState({ likesCount: this.props.video.likesCount, dislikesCount: this.props.video.dislikesCount})
+    }
+
     handleLike() {
-        if (!this.props.currentUser) return;
+        if (!this.props.currentUser || this.state.updatingLikeStatus) return;
 
-        if (this.state.processingLikeOrDislike) {
-            return;
+        let currLikes = this.state.likesCount;
+        let currDislikes = this.state.dislikesCount;
+        this.setState({ updatingLikeStatus: true })
+        if (Object.keys(this.props.currentUserLike).length === 0) {
+            this.props.postLike({
+                video_id: this.props.video.id,
+                liked: true
+            })
+            // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
+                .then(() => this.setState({ likesCount: currLikes + 1, updatingLikeStatus: false }));
         } else {
-            this.setState({ processingLikeOrDislike: true })
-
-            if (Object.keys(this.props.currentUserLike).length === 0) {
-                this.props.postLike({
+            if (this.props.currentUserLike.liked) {
+                this.props.deleteLike(this.props.currentUserLike.id)
+                    // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
+                    .then(() => this.setState({ likesCount: currLikes - 1, updatingLikeStatus: false }));
+            } else {
+                this.props.patchLike({
+                    id: this.props.currentUserLike.id,
                     video_id: this.props.video.id,
                     liked: true
                 })
-                .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                .then(() => this.setState({ processingLikeOrDislike: false }));
-            } else {
-                if (this.props.currentUserLike.liked) {
-                    this.props.deleteLike(this.props.currentUserLike.id)
-                        .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                        .then(() => this.setState({ processingLikeOrDislike: false }));
-                } else {
-                    this.props.patchLike({
-                        id: this.props.currentUserLike.id,
-                        video_id: this.props.video.id,
-                        liked: true
-                    })
-                    .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                    .then(() => this.setState({ processingLikeOrDislike: false }));
-                }
+                // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
+                    .then(() => this.setState({ likesCount: currLikes + 1, dislikesCount: currDislikes - 1, updatingLikeStatus: false }));
             }
         }
     }
 
     handleDislike() {
-        if (!this.props.currentUser) return;
-
-        if (this.state.processingLikeOrDislike) {
-            return;
+        if (!this.props.currentUser || this.state.updatingLikeStatus) return;
+        
+        let currLikes = this.state.likesCount;
+        let currDislikes = this.state.dislikesCount;
+        this.setState({ updatingLikeStatus: true })
+        if (Object.keys(this.props.currentUserLike).length === 0) {
+            this.props.postLike({
+                video_id: this.props.video.id,
+                liked: false
+            })
+            // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
+                .then(() => this.setState({ dislikesCount: currDislikes + 1, updatingLikeStatus: false }));
         } else {
-            this.setState({ processingLikeOrDislike: true })
-
-            if (Object.keys(this.props.currentUserLike).length === 0) {
-                this.props.postLike({
+            if (!this.props.currentUserLike.liked) {
+                this.props.deleteLike(this.props.currentUserLike.id)
+                    // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
+                    .then(() => this.setState({ dislikesCount: currDislikes - 1, updatingLikeStatus: false }));
+            } else {
+                this.props.patchLike({
+                    id: this.props.currentUserLike.id,
                     video_id: this.props.video.id,
                     liked: false
                 })
-                .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                .then(() => this.setState({ processingLikeOrDislike: false }));
-            } else {
-                if (!this.props.currentUserLike.liked) {
-                    this.props.deleteLike(this.props.currentUserLike.id)
-                        .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                        .then(() => this.setState({ processingLikeOrDislike: false }));
-                } else {
-                    this.props.patchLike({
-                        id: this.props.currentUserLike.id,
-                        video_id: this.props.video.id,
-                        liked: false
-                    })
-                    .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                    .then(() => this.setState({ processingLikeOrDislike: false }));
-                }
+                // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
+                    .then(() => this.setState({ likesCount: currLikes - 1, dislikesCount: currDislikes + 1, updatingLikeStatus: false }));
             }
         }
     }
@@ -185,15 +185,15 @@ class VideoShow extends React.Component {
                                     </div>
                                     
                                     <div className="video-likes">
-                                        <button onClick={this.handleLike} disabled={this.state.processingLikeOrDislike}>
+                                        <button onClick={this.handleLike} disabled={this.state.updatingLikeStatus}>
                                             <FontAwesomeIcon icon={faThumbsUp} className={`video-thumbs-up ${thumbsUpActivity}`}/>
                                         </button>
-                                        <span>{video.likesCount}</span>
+                                        <span>{this.state.likesCount}</span>
 
-                                        <button onClick={this.handleDislike} disabled={this.state.processingLikeOrDislike}>
+                                        <button onClick={this.handleDislike} disabled={this.state.updatingLikeStatus}>
                                             <FontAwesomeIcon icon={faThumbsDown} className={`video-thumbs-down ${thumbsDownActivity}`}/>
                                         </button>
-                                        <span>{video.dislikesCount}</span>
+                                        <span>{this.state.dislikesCount}</span>
                                     </div>
                                 </div>
                             </div>
