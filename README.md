@@ -1,7 +1,7 @@
 <!-- ![alt text](https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/zootube_logo.png "ZooTube Logo") -->
 
 <div align="center">
-    <img width="500" src="./app/assets/logo.png">
+    <img width="500" src="./app/assets/images/logo.png">
 </div>
 
 ## Background and Overview 
@@ -17,8 +17,8 @@
 * CSS
 
 ## Wireframes
-![](./app/assets/wireframes1.jpeg)
-![](./app/assets/wireframes2.jpeg)
+![](./app/assets/images/wireframes1.jpeg)
+![](./app/assets/images/wireframes2.jpeg)
 
 
 ## Video Upload
