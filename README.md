@@ -16,8 +16,8 @@
 
 ## Wireframes
 ![](./app/assets/images/wireframes1.jpeg)
-![](./app/assets/images/wireframes2.jpeg)
 
+![](./app/assets/images/wireframes2.jpeg)
 
 ## Video Upload
 Once signed in, users can access a video upload form with a clear, minimalist layout.
@@ -39,7 +39,11 @@ end
 
 When a search is made, whatever text is in the input field is passed into the index action as an argument. From there, Rails will fire an SQL query to select all videos whose lowercased titles include the lowercased query. This helps get around issues with differing capitalization between video titles and search requests. For example, if a user simply searched for 'penguin', or if they accidentally had their caps-lock on, their search results would still include a video with the title 'Penguin Party'. 
 
-![alt text](https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/search_func.png "Search Functionality")
+<!-- ![alt text](https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/search_func.gif "Search Functionality") -->
+
+<div align="center">
+    <img width="838" src="https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/search_func.gif">
+</div>
 
 By default, when no query is present, the controller's index action will behave as expected and simply serve up all videos (e.g., when navigating to the video index page).
 
