@@ -19,12 +19,50 @@
 
 ![](./app/assets/images/wireframes2.jpeg)
 
-## Video Upload
-Once signed in, users can access a video upload form with a clear, minimalist layout.
+## Liking & Disliking
+<div align="center">
+    <img width="838" src="https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/like_func.gif">
+</div>
 
-![alt text](https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/video_upload.png "Video Upload Form")
+Users can 'like' or 'dislike' videos by interacting with the thumbs up and thumbs down buttons beneath each one. Clicking the thumbs up or thumbs down button will call the `handleLike()` or `handleDislike()` function, respectively. When `handleLike()` is invoked, the function will first check to see if there is a `currentUser`. If the user is not currently signed in, they will be redirected to the app's sign in page. Next, assuming there is a `currentUser`, the function will check the status of `this.state.updating`--a boolean value stored in the component's local state--in order to see if the component is already in the process of updating. If so, the function will simply return. 
 
-The form's video and image boxes use Dropzone, a React hook that allows for HTML5-compliant drag-and-drop functionality. Meanwhile, the default click option to find and select a video/image for upload has been preserved, allowing users some flexibility in how they choose to complete the form. Some basic CSS styling provides visual cues indicating to the user that they can interact with these boxes and, later, that a video/image has successfully uploaded. If there are any problems with a submission attempt, error messages will display at the bottom of the form.
+Assuming there is a `currentUser` and the component is not already `updating`, the function will start the updating process by setting `updating` to 'true' and storing the current `likesCount` and `dislikesCount` for later. From there, some conditional logic is used to determine which type of request should be sent to the backend. Note the variable `currentUserLike` at the start of this conditional logic. If there is a `currentUser` and that user currently likes or dislikes the given video, then `currentUserLike` will contain that single 'like' object as a key-value pair. If not, it will be empty.
+
+So, if an array of `currentUserLike`'s keys has a length of zero (and `currentUserLike` is therefore an empty object, meaning the user currently neither likes nor dislikes the given video), a POST request is sent to the database, creating a new 'like' object unique to that user and video. Otherwise, if `currentUserLike` is not an empty object (meaning the user currently likes or dislikes the given video), the function will check the status of `liked`, a boolean value stored in that object. If `liked` is true (and the user has therefore clicked the thumbs up button on a video they currently like), a DELETE request is sent to the database, destroying the 'like' object associated with that user and video. Meanwhile, if `liked` is false (and the user has therefore clicked the thumbs up button on a video they currently dislike), a PATCH request is sent to the database, updating the 'like' object associated with the current user and video by setting the value of `liked` to 'true'.
+
+In any event, after the correct request is sent to and handled by the database, `likesCount` and `dislikesCount` will be updated accordingly and `updating` will be switched back to 'false'. These first two variables are used to display the number of likes and dislikes next to the thumbs up and thumbs down buttons, and `updating` is used to regulate user input and prevent any potential errors caused by rapid mouse clicks. The `handleDislike()` function works more or less the same.
+
+``` javascript
+handleLike() {
+    if (!this.props.currentUser) this.props.history.push('/signin');
+
+    if (this.state.updating) return;
+
+    this.setState({ updating: true })
+    let currLikes = this.state.likesCount;
+    let currDislikes = this.state.dislikesCount;
+
+    if (Object.keys(this.props.currentUserLike).length === 0) {
+        this.props.postLike({
+            video_id: this.props.video.id,
+            liked: true
+        })
+        .then(() => this.setState({ likesCount: currLikes + 1, updating: false }));
+    } else {
+        if (this.props.currentUserLike.liked) {
+            this.props.deleteLike(this.props.currentUserLike.id)
+            .then(() => this.setState({ likesCount: currLikes - 1, updating: false }));
+        } else {
+            this.props.patchLike({
+                id: this.props.currentUserLike.id,
+                video_id: this.props.video.id,
+                liked: true
+            })
+            .then(() => this.setState({ likesCount: currLikes + 1, dislikesCount: currDislikes - 1, updating: false }));
+        }
+    }
+}
+```
 
 ## Search
 <div align="center">

@@ -46,11 +46,13 @@ class VideoShow extends React.Component {
     }
 
     handleLike() {
-        if (!this.props.currentUser || this.state.updating) return;
+        if (!this.props.currentUser) this.props.history.push('/signin');
 
+        if (this.state.updating) return;
+
+        this.setState({ updating: true })
         let currLikes = this.state.likesCount;
         let currDislikes = this.state.dislikesCount;
-        this.setState({ updating: true })
 
         if (Object.keys(this.props.currentUserLike).length === 0) {
             this.props.postLike({
@@ -74,11 +76,13 @@ class VideoShow extends React.Component {
     }
 
     handleDislike() {
-        if (!this.props.currentUser || this.state.updating) return;
+        if (!this.props.currentUser) this.props.history.push('/signin');
+
+        if (this.state.updating) return;
         
+        this.setState({ updating: true })
         let currLikes = this.state.likesCount;
         let currDislikes = this.state.dislikesCount;
-        this.setState({ updating: true })
 
         if (Object.keys(this.props.currentUserLike).length === 0) {
             this.props.postLike({
