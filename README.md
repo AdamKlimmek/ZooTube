@@ -21,7 +21,7 @@
 
 ## Liking & Disliking
 <div align="center">
-    <img width="838" src="https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/like_func.gif">
+    <img width="838" src="https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/like_dislike_func.gif">
 </div>
 
 Users can 'like' or 'dislike' videos by interacting with the thumbs up and thumbs down buttons beneath each one. Clicking the thumbs up or thumbs down button will call the `handleLike()` or `handleDislike()` function, respectively. When `handleLike()` is invoked, the function will first check to see if there is a `currentUser`. If the user is not currently signed in, they will be redirected to the app's sign in page. Next, assuming there is a `currentUser`, the function will check the status of `this.state.updating`--a boolean value stored in the component's local state--in order to see if the component is already in the process of updating. If so, the function will simply return. 
