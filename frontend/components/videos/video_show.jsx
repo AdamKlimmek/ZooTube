@@ -13,7 +13,7 @@ class VideoShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            updatingLikeStatus: false,
+            updating: false,
             likesCount: 0,
             dislikesCount: 0,
         }
@@ -46,61 +46,57 @@ class VideoShow extends React.Component {
     }
 
     handleLike() {
-        if (!this.props.currentUser || this.state.updatingLikeStatus) return;
+        if (!this.props.currentUser || this.state.updating) return;
 
         let currLikes = this.state.likesCount;
         let currDislikes = this.state.dislikesCount;
-        this.setState({ updatingLikeStatus: true })
+        this.setState({ updating: true })
+
         if (Object.keys(this.props.currentUserLike).length === 0) {
             this.props.postLike({
                 video_id: this.props.video.id,
                 liked: true
             })
-            // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                .then(() => this.setState({ likesCount: currLikes + 1, updatingLikeStatus: false }));
+            .then(() => this.setState({ likesCount: currLikes + 1, updating: false }));
         } else {
             if (this.props.currentUserLike.liked) {
                 this.props.deleteLike(this.props.currentUserLike.id)
-                    // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                    .then(() => this.setState({ likesCount: currLikes - 1, updatingLikeStatus: false }));
+                .then(() => this.setState({ likesCount: currLikes - 1, updating: false }));
             } else {
                 this.props.patchLike({
                     id: this.props.currentUserLike.id,
                     video_id: this.props.video.id,
                     liked: true
                 })
-                // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                    .then(() => this.setState({ likesCount: currLikes + 1, dislikesCount: currDislikes - 1, updatingLikeStatus: false }));
+                .then(() => this.setState({ likesCount: currLikes + 1, dislikesCount: currDislikes - 1, updating: false }));
             }
         }
     }
 
     handleDislike() {
-        if (!this.props.currentUser || this.state.updatingLikeStatus) return;
+        if (!this.props.currentUser || this.state.updating) return;
         
         let currLikes = this.state.likesCount;
         let currDislikes = this.state.dislikesCount;
-        this.setState({ updatingLikeStatus: true })
+        this.setState({ updating: true })
+
         if (Object.keys(this.props.currentUserLike).length === 0) {
             this.props.postLike({
                 video_id: this.props.video.id,
                 liked: false
             })
-            // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                .then(() => this.setState({ dislikesCount: currDislikes + 1, updatingLikeStatus: false }));
+            .then(() => this.setState({ dislikesCount: currDislikes + 1, updating: false }));
         } else {
             if (!this.props.currentUserLike.liked) {
                 this.props.deleteLike(this.props.currentUserLike.id)
-                    // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                    .then(() => this.setState({ dislikesCount: currDislikes - 1, updatingLikeStatus: false }));
+                .then(() => this.setState({ dislikesCount: currDislikes - 1, updating: false }));
             } else {
                 this.props.patchLike({
                     id: this.props.currentUserLike.id,
                     video_id: this.props.video.id,
                     liked: false
                 })
-                // .then(() => this.props.fetchVideo(this.props.match.params.videoId))
-                    .then(() => this.setState({ likesCount: currLikes - 1, dislikesCount: currDislikes + 1, updatingLikeStatus: false }));
+                .then(() => this.setState({ likesCount: currLikes - 1, dislikesCount: currDislikes + 1, updating: false }));
             }
         }
     }
@@ -132,7 +128,7 @@ class VideoShow extends React.Component {
         let thumbsDownActivity = "";
         if (!currentUser) {
             thumbsUpActivity = "";
-            let thumbsDownActivity = "";
+            thumbsDownActivity = "";
         } else {
             if (currentUserLike.liked !== undefined) {
                 if (currentUserLike.liked) {
@@ -185,12 +181,12 @@ class VideoShow extends React.Component {
                                     </div>
                                     
                                     <div className="video-likes">
-                                        <button onClick={this.handleLike} disabled={this.state.updatingLikeStatus}>
+                                        <button onClick={this.handleLike} disabled={this.state.updating}>
                                             <FontAwesomeIcon icon={faThumbsUp} className={`video-thumbs-up ${thumbsUpActivity}`}/>
                                         </button>
                                         <span>{this.state.likesCount}</span>
 
-                                        <button onClick={this.handleDislike} disabled={this.state.updatingLikeStatus}>
+                                        <button onClick={this.handleDislike} disabled={this.state.updating}>
                                             <FontAwesomeIcon icon={faThumbsDown} className={`video-thumbs-down ${thumbsDownActivity}`}/>
                                         </button>
                                         <span>{this.state.dislikesCount}</span>
