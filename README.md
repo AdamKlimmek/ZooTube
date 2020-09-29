@@ -1,7 +1,7 @@
 <!-- ![alt text](https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/zootube_logo.png "ZooTube Logo") -->
 
 <div align="center">
-    <img width="838" src="./app/assets/images/logo.png">
+    <img width="450" src="./app/assets/images/logo.png">
 </div>
 
 ## Background and Overview 
