@@ -27,7 +27,11 @@ Once signed in, users can access a video upload form with a clear, minimalist la
 The form's video and image boxes use Dropzone, a React hook that allows for HTML5-compliant drag-and-drop functionality. Meanwhile, the default click option to find and select a video/image for upload has been preserved, allowing users some flexibility in how they choose to complete the form. Some basic CSS styling provides visual cues indicating to the user that they can interact with these boxes and, later, that a video/image has successfully uploaded. If there are any problems with a submission attempt, error messages will display at the bottom of the form.
 
 ## Search
-A search field within the navbar allows users and guests of the site to quickly search for videos. The integration of search functionality was possible with only minor tweaks to the video controller's index action.
+<div align="center">
+    <img width="838" src="https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/search_func.gif">
+</div>
+
+A search field within the navbar allows users and guests of the site to quickly search for videos. The integration of search functionality was possible with only minor tweaks to the video controller's index action. When a search is made, whatever text is in the input field is passed into the index action as an argument. From there, Rails will fire an SQL query to select all videos whose lowercased titles include the lowercased query. This helps get around issues with differing capitalization between video titles and search requests. For example, if a user simply searched for 'penguin', or if they accidentally had their caps-lock on, their search results would still include a video with the title 'Penguin Party'. 
 
 ```ruby
 def index(query = "")
@@ -36,14 +40,6 @@ def index(query = "")
     render :index
 end
 ```
-
-When a search is made, whatever text is in the input field is passed into the index action as an argument. From there, Rails will fire an SQL query to select all videos whose lowercased titles include the lowercased query. This helps get around issues with differing capitalization between video titles and search requests. For example, if a user simply searched for 'penguin', or if they accidentally had their caps-lock on, their search results would still include a video with the title 'Penguin Party'. 
-
-<!-- ![alt text](https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/search_func.gif "Search Functionality") -->
-
-<div align="center">
-    <img width="838" src="https://github.com/AdamKlimmek/ZooTube/blob/master/app/assets/images/search_func.gif">
-</div>
 
 By default, when no query is present, the controller's index action will behave as expected and simply serve up all videos (e.g., when navigating to the video index page).
 
