@@ -74,7 +74,7 @@ class SideMenu extends React.Component {
 
                         <a href="https://www.klimmek.io" className="side-menu-link" target="_blank">
                             <FontAwesomeIcon icon={faUser} className="side-menu-link-icon" />
-                            <span>Author</span>
+                            <span>Portfolio</span>
                         </a>
                     </div>
     

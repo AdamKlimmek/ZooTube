@@ -78,7 +78,7 @@ class Dropdown extends React.Component {
 
                     <a href="https://www.klimmek.io" className="user-dropdown-link" target="_blank">
                         <FontAwesomeIcon icon={faUser} className="user-dropdown-link-icon" />
-                        <span>About the Author</span>
+                        <span>Portfolio</span>
                     </a>
 
                     <button className="user-dropdown-link" onClick={this.props.signout}>
