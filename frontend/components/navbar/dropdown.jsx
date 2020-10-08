@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faVideo, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faVideo, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, faAngellist } from '@fortawesome/free-brands-svg-icons';
 
 class Dropdown extends React.Component {
@@ -71,9 +71,14 @@ class Dropdown extends React.Component {
                         <span>LinkedIn</span>
                     </a>
 
-                    <a href="https://angel.co/u/adam-klimmek" className="user-dropdown-link" target="_blank">
+                    <a href="https://www.angel.co/u/adam-klimmek" className="user-dropdown-link" target="_blank">
                         <FontAwesomeIcon icon={faAngellist} className="user-dropdown-link-icon" />
                         <span>AngelList</span>
+                    </a>
+
+                    <a href="https://www.klimmek.io" className="user-dropdown-link" target="_blank">
+                        <FontAwesomeIcon icon={faUser} className="user-dropdown-link-icon" />
+                        <span>About the Author</span>
                     </a>
 
                     <button className="user-dropdown-link" onClick={this.props.signout}>
