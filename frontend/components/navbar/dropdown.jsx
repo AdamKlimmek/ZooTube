@@ -76,7 +76,7 @@ class Dropdown extends React.Component {
                         <span>AngelList</span>
                     </a>
 
-                    <a href="https://www.klimmek.io" className="user-dropdown-link" target="_blank">
+                    <a href="https://klimmek.io" className="user-dropdown-link" target="_blank">
                         <FontAwesomeIcon icon={faUser} className="user-dropdown-link-icon" />
                         <span>Portfolio</span>
                     </a>
